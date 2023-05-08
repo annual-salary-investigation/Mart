@@ -4,9 +4,11 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -62,8 +64,54 @@ namespace MartApp
                             Image = Convert.ToString(row["Image"])
                         });
                     }
-                    
+
                     this.DataContext = list;
+                }
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            List<MartItem> list = new List<MartItem>();
+            {
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                {
+                    if (conn.State == System.Data.ConnectionState.Closed) { conn.Open(); }
+
+                    var query = @"SELECT ProductId,
+                                         Product,
+                                         Price,
+                                         Category,
+                                         Image
+                                    FROM martdb
+                                    WHERE Category='과일'";
+
+                    var cmd = new MySqlCommand(query, conn);
+                    var adapter = new MySqlDataAdapter(cmd);
+                    var ds = new DataSet();
+                    adapter.Fill(ds, "martdb");
+                    BitmapImage Source;
+
+                    foreach (DataRow row in ds.Tables["martdb"].Rows)
+                    {
+                        
+                        list.Add(new MartItem
+                        {
+                            Image = Convert.ToString(row["Image"])
+                           
+                        });
+
+                        var ImgUri = Convert.ToString(row["Image"]);
+                        Source = new BitmapImage(new Uri(ImgUri, UriKind.RelativeOrAbsolute));
+                        this.DataContext = Source;
+
+                    }
+                   
+
+
+
+
                 }
             }
         }
