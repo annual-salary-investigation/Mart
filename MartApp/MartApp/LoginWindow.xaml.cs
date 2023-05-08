@@ -28,13 +28,15 @@ namespace wp01_martui
             
             string strtxtId = "";
             string strtxtPassword = "";
+            string password = txtPassword.Password;
+
 
             if (string.IsNullOrEmpty(txtId.Text))
             {
                 await this.ShowMessageAsync("오류", "아이디를 입력하세요", MessageDialogStyle.Affirmative, null);
                 return;
             }
-            if (string.IsNullOrEmpty(txtPassword.Text))
+            if (string.IsNullOrEmpty(password))
             {
                 await this.ShowMessageAsync("오류", "패스워드를 입력하세요", MessageDialogStyle.Affirmative, null);
                 return;
@@ -51,7 +53,7 @@ namespace wp01_martui
                                       AND Password = @Password;";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlParameter prmId = new MySqlParameter("@Id", txtId.Text);
-                    MySqlParameter prmPassword = new MySqlParameter("@PassWord", txtPassword.Text);
+                    MySqlParameter prmPassword = new MySqlParameter("@PassWord", password);
 
                     cmd.Parameters.Add(prmId);
                     cmd.Parameters.Add(prmPassword);
@@ -71,7 +73,7 @@ namespace wp01_martui
                         txtId.Focus();
                         await this.ShowMessageAsync("로그인 실패", "회원 정보가 맞지 않습니다", MessageDialogStyle.Affirmative, null);
                         txtId.Text = "";
-                        txtPassword.Text = "";
+                        password = "";
                     }
                 }
             }

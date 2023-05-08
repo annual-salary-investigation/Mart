@@ -84,7 +84,6 @@ namespace MartApp
             {
                 this.Close();
             }
-            
         }
     }
 }

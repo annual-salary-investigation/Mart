@@ -14,7 +14,7 @@
         <Label Content="아이디" Width="204" />
         <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
         <Label Content="비밀번호" Width="204"/>
-        <TextBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" Text="12345" />
+        <PasswordBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" />
         <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35"></Button>
     </StackPanel>
 </mah:MetroWindow>
