@@ -103,6 +103,14 @@ namespace wp01_martui
         {
             txtId.Focus();
         }
+
+        private void btnJoin_Click(object sender, RoutedEventArgs e)
+        {
+            var join = new Join();
+            join.Owner = this;
+            join.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            join.ShowDialog();
+        }
     }
 }
 
