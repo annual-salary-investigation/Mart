@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MartApp.Models
+{
+    public class OrderItem
+    {
+        public int ProductId { get; set; } // mart테이블 외래키, 자동증가
+        public string Id { get; set; } // user테이블 외래키
+        public string Product { get; set; }
+        public int Price { get; set; }
+        public int Count {set; get; } // 수량
+        public string Category { get; set; }
+        public string Image { get; set; }
+        public DateTime DateTime { get; set; } // 주문시간
+    }
+}

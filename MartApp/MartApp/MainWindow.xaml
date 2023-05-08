@@ -1,0 +1,33 @@
+﻿<mah:MetroWindow x:Class="MartApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:MartApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="600" Loaded="BtnSelFruit_Click">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
+        <Button Grid.Row="0" Content="장바구니" HorizontalAlignment="Right"/>
+        
+        <!--카테고리-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="BtnSelFruit" Content="과일" Click="BtnSelFruit_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            <Button x:Name="BtnSelVege" Content="채소" Click="BtnSelVege_Click"/>
+            <Button x:Name="BtnSelMeat" Content="육류" Click="BtnSelMeat_Click"/>
+            <Button x:Name="BtnSelSeafood" Content="수산" Click="BtnSelSeafood_Click"/>
+            <Button x:Name="BtnSelSnack" Content="과자" Click="BtnSelSnack_Click"/>
+            <Button x:Name="BtnSelDrink" Content="음료" Click="BtnSelDrink_Click"/>
+        </StackPanel>
+
+        <Frame x:Name="CategoryPage" NavigationUIVisibility="Hidden" Grid.Row="2"/>
+    </Grid>
+</mah:MetroWindow>
