@@ -19,9 +19,9 @@ namespace mart
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class CartWindow : MetroWindow
     {
-        public MainWindow()
+        public CartWindow()
         {
             InitializeComponent();
         }
@@ -33,12 +33,12 @@ namespace mart
 
         private void BtnMart_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnPayment_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
 
         }
     }

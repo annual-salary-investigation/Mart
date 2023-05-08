@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using mart;
+using MartApp.Logics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wp01_martui;
 
 namespace MartApp
 {
@@ -59,6 +62,29 @@ namespace MartApp
             CategoryPage.Source = new Uri("DrinkPage.xaml", UriKind.Relative);
         }
 
-      
+        private void BtnCart_Click(object sender, RoutedEventArgs e)
+        {
+            var cartpage = new CartWindow();
+            cartpage.Owner = this;
+            cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            cartpage.ShowDialog();
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var loginpage = new LoginWindow();
+            loginpage.Owner = this;
+            loginpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            loginpage.ShowDialog();
+            if (Commons.Islogin )
+            {
+                BtnSelFruit_Click(sender, e);
+            }
+            else
+            {
+                this.Close();
+            }
+            
+        }
     }
 }

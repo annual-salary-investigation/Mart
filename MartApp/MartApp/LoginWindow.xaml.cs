@@ -1,34 +1,23 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using mart;
+using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using wp01_martui.Logics;
-using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace wp01_martui
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class LoginWindow : MetroWindow
     {
-        public MainWindow()
+
+
+        public LoginWindow()
         {
             InitializeComponent();
         }
@@ -36,7 +25,7 @@ namespace wp01_martui
         // 로그인 버튼
         private async void btnOk_Click(object sender, RoutedEventArgs e)
         {
-
+            
             string strtxtId = "";
             string strtxtPassword = "";
 
@@ -52,7 +41,7 @@ namespace wp01_martui
             }
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Commons.myConnString))
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                 {
                     conn.Open();
                     string query = @"SELECT Id,
@@ -74,6 +63,7 @@ namespace wp01_martui
                         strtxtPassword = reader["Password"] != null ? reader["Password"].ToString() : "-";
                         Commons.isManager = true;
                         await this.ShowMessageAsync("로그인 성공!", "상품을 담아주세요", MessageDialogStyle.Affirmative, null);
+                        Commons.Islogin = true;
                         this.Close();
                     }
                     else

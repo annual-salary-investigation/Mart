@@ -6,7 +6,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="600" Loaded="BtnSelFruit_Click">
+        Title="MainWindow" Height="700" Width="600" Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
-        <Button Grid.Row="0" Content="장바구니" HorizontalAlignment="Right"/>
+        <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Click="BtnCart_Click"/>
         
         <!--카테고리-->
         <StackPanel Grid.Row="1" Orientation="Horizontal">

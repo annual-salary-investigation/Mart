@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls.Dialogs;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace MartApp.Logics
 {
     public class Commons
     {
+
+        public static bool Islogin = false;
+
         // DB 연결 (MySQL)
         public static readonly string MyConnString = "Server=210.119.12.72;" +
                                                      "Port=3306;" +
@@ -18,5 +22,11 @@ namespace MartApp.Logics
                                                      "Pwd=12345;";
 
         // 
+        public static async Task<MessageDialogResult> ShowMessageAsync(string title, string message,
+                                 MessageDialogStyle style = MessageDialogStyle.Affirmative)
+        {
+            return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title, message, style, null);
+        }
+        public static bool isManager = false;
     }
 }
