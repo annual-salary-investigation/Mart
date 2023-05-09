@@ -9,14 +9,18 @@
         mc:Ignorable="d"
         Title="Join" Height="600" Width="600">
     <Grid>
-        <StackPanel Margin="30" HorizontalAlignment="Center">
-            <Label Content="회원가입" FontSize="22" HorizontalAlignment="Center" Margin="18" />
+        <StackPanel Margin="10" HorizontalAlignment="Center">
+            <Label Content="회원가입" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="15" />
 
             <Label Content="아이디" Width="204" />
             <TextBox x:Name="txtId" FontSize="18" Width="200" Style="{StaticResource MahApps.Styles.TextBox}" 
                      mah:TextBoxHelper.Watermark="아이디를 입력하세요" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"/>
-            
+            <StackPanel>
+                <Button x:Name="checkId" Content="아이디 확인" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="IdNotice" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+            </StackPanel>
+
             <Label Content="이름" Width="204" />
             <TextBox x:Name="txtName" FontSize="18" Width="200"
                     mah:TextBoxHelper.Watermark="이름을 입력하세요" 
@@ -43,7 +47,7 @@
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnOk" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Click="btnOk_Click"></Button>
-                <Button x:Name="btnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35"/>
+                <Button x:Name="btnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnCancel_Click"/>
 
             </StackPanel>
         </StackPanel>
