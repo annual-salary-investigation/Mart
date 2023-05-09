@@ -16,8 +16,8 @@
         <Label Content="비밀번호" Width="204"/>
         <PasswordBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnJoin" Content="회원가입" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnJoin_Click"/>
-            <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35"></Button>
+            <Button x:Name="btnJoin" Content="회원가입" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnJoin_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
+            <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"></Button>
 
         </StackPanel>
     </StackPanel>

@@ -92,24 +92,21 @@ namespace MartApp
                     var ds = new DataSet();
                     adapter.Fill(ds, "martdb");
                     BitmapImage Source;
+                    var ImgUri="";
 
                     foreach (DataRow row in ds.Tables["martdb"].Rows)
                     {
-                        
                         list.Add(new MartItem
                         {
                             Image = Convert.ToString(row["Image"])
-                           
                         });
-
-                        var ImgUri = Convert.ToString(row["Image"]);
-                        Source = new BitmapImage(new Uri(ImgUri, UriKind.RelativeOrAbsolute));
-                        this.DataContext = Source;
-
                     }
+
                    
-
-
+                    ImgUri = list[0].Image.ToString();
+                    
+                    Source = new BitmapImage(new Uri(ImgUri, UriKind.RelativeOrAbsolute));
+                    this.DataContext = Source;
 
 
                 }
