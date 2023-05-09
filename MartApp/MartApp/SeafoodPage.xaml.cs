@@ -50,6 +50,12 @@ namespace MartApp
                         var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
                         Image image = this.FindName($"Img{i + 1}") as Image;
                         image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
+
+                        // 라벨
+                        // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
+                        var LblContent = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
+                        Label label = this.FindName($"Lbl{i + 1}") as Label;
+                        label.Content = LblContent;
                     }
                 }
             }

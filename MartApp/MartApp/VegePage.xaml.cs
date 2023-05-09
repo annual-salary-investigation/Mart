@@ -28,45 +28,6 @@ namespace MartApp
         public VegePage()
         {
             InitializeComponent();
-            LoadedVegePage();
-        }
-
-        private void LoadedVegePage()
-        {
-            List<MartItem> list = new List<MartItem>();
-            {
-                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
-                {
-                    if (conn.State == System.Data.ConnectionState.Closed) { conn.Open(); }
-
-                    var query = @"SELECT ProductId,
-                                         Product,
-                                         Price,
-                                         Category,
-                                         Image
-                                    FROM martdb
-                                    WHERE Category='채소'";
-
-                    var cmd = new MySqlCommand(query, conn);
-                    var adapter = new MySqlDataAdapter(cmd);
-                    var ds = new DataSet();
-                    adapter.Fill(ds, "martdb");
-
-                    foreach (DataRow row in ds.Tables["martdb"].Rows)
-                    {
-                        list.Add(new MartItem
-                        {
-                            ProductId = Convert.ToInt32(row["ProductId"]),
-                            Product = Convert.ToString(row["Product"]),
-                            Price = Convert.ToInt32(row["Price"]),
-                            Category = Convert.ToString(row["Category"]),
-                            Image = Convert.ToString(row["Image"])
-                        });
-                    }
-
-                    this.DataContext = list;
-                }
-            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -98,6 +59,12 @@ namespace MartApp
                         var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
                         Image image = this.FindName($"Img{i + 1}") as Image;
                         image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
+
+                        // 라벨
+                        // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
+                        var LblContent = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
+                        Label label = this.FindName($"Lbl{i + 1}") as Label;
+                        label.Content = LblContent;
                     }
                 }
             }

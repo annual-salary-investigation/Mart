@@ -10,11 +10,17 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="77*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
                 <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
                     <Image x:Name="Img1"/>
@@ -26,9 +32,21 @@
                     <Image x:Name="Img3"/>
                 </Button>
             </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="Lbl1" Height="50" Width="100" Margin="10"/>
+                <Label x:Name="Lbl2" Height="50" Width="100" Margin="10"/>
+                <Label x:Name="Lbl3" Height="50" Width="100" Margin="10"/>
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
                 <Button x:Name="Btn4" Height="100" Width="100" Margin="10">
                     <Image x:Name="Img4" />
@@ -42,6 +60,13 @@
                 <Button x:Name="Btn7" Style="{Binding}" Height="100" Width="100" Margin="10">
                     <Image x:Name="Img7"/>
                 </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="Lbl4" Height="50" Width="100" Margin="10"/>
+                <Label x:Name="Lbl5" Height="50" Width="100" Margin="10"/>
+                <Label x:Name="Lbl6" Height="50" Width="100" Margin="10"/>
+                <Label x:Name="Lbl7" Height="50" Width="100" Margin="10"/>
             </StackPanel>
         </Grid>
 
