@@ -150,6 +150,10 @@ namespace MartApp.Join
                     {
                         IdNotice.Text = "아이디에 공백이 있습니다!";
                     }
+                    else if (string.IsNullOrEmpty(txtId.Text))
+                    {
+                        IdNotice.Text = "아이디를 입력하세요!";
+                    }
                     else
                     {
                         IdNotice.Text = "사용 가능한 아이디";
