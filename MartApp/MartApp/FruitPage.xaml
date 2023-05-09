@@ -19,31 +19,31 @@
         </DataGrid>-->
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnApple" Height="100" Width="100"  Margin="10">
+                    <Image x:Name="ImgApple" Source="{Binding}"/>
                 </Button>
-                <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnBlueberry" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgBlueberry" Source="{Binding}"/>
                 </Button>
-                <Button x:Name="Btn3" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnOrange" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgOrange" Source="{Binding}"/>
                 </Button>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnKiwi" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgKiwi" Source="{Binding}"/>
                 </Button>
-                <Button x:Name="Btn5" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnMango" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgMango" Source="{Binding}"/>
                 </Button>
-                <Button x:Name="Btn6" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnBanan" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgBanan" Source="{Binding}"/>
                 </Button>
-                <Button x:Name="Btn7" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                <Button x:Name="BtnPineapple" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="ImgPineapple" Source="{Binding}"/>
                 </Button>
             </StackPanel>
         </Grid>

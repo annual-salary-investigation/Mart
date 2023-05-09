@@ -72,9 +72,9 @@ namespace MartApp
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
             List<MartItem> list = new List<MartItem>();
             {
+
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                 {
                     if (conn.State == System.Data.ConnectionState.Closed) { conn.Open(); }
@@ -92,23 +92,24 @@ namespace MartApp
                     var ds = new DataSet();
                     adapter.Fill(ds, "martdb");
                     BitmapImage Source;
-                    var ImgUri="";
+
 
                     foreach (DataRow row in ds.Tables["martdb"].Rows)
                     {
+
                         list.Add(new MartItem
                         {
                             Image = Convert.ToString(row["Image"])
                         });
+
                     }
-
-                   
-                    ImgUri = list[0].Image.ToString();
-                    
-                    Source = new BitmapImage(new Uri(ImgUri, UriKind.RelativeOrAbsolute));
-                    this.DataContext = Source;
-
-
+                    ImgApple.Source = new BitmapImage(new Uri(list[0].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgBlueberry.Source = new BitmapImage(new Uri(list[1].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgOrange.Source = new BitmapImage(new Uri(list[2].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgKiwi.Source = new BitmapImage(new Uri(list[3].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgMango.Source = new BitmapImage(new Uri(list[5].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgBanan.Source = new BitmapImage(new Uri(list[4].Image.ToString(), UriKind.RelativeOrAbsolute));
+                    ImgPineapple.Source = new BitmapImage(new Uri(list[6].Image.ToString(), UriKind.RelativeOrAbsolute));
                 }
             }
         }
