@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -91,24 +90,15 @@ namespace MartApp
                     var adapter = new MySqlDataAdapter(cmd);
                     var ds = new DataSet();
                     adapter.Fill(ds, "martdb");
-                    BitmapImage Source;
-                    var ImgUri="";
 
-                    foreach (DataRow row in ds.Tables["martdb"].Rows)
+                    for (int i = 0; i < ds.Tables["martdb"].Rows.Count; i++)
                     {
-                        list.Add(new MartItem
-                        {
-                            Image = Convert.ToString(row["Image"])
-                        });
+                        Debug.WriteLine($"{i}");
+                        Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
+                        var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
+                        Image image = this.FindName($"Img{i + 1}") as Image;
+                        image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
                     }
-
-                   
-                    ImgUri = list[0].Image.ToString();
-                    
-                    Source = new BitmapImage(new Uri(ImgUri, UriKind.RelativeOrAbsolute));
-                    this.DataContext = Source;
-
-
                 }
             }
         }

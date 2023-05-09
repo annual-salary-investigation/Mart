@@ -20,13 +20,13 @@
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
                 <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img1" Source="{Binding}"/>
                 </Button>
                 <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img2" Source="{Binding}"/>
                 </Button>
                 <Button x:Name="Btn3" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img3" Source="{Binding}"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -34,16 +34,16 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
                 <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img4" Source="{Binding}"/>
                 </Button>
                 <Button x:Name="Btn5" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img5" Source="{Binding}"/>
                 </Button>
                 <Button x:Name="Btn6" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img6" Source="{Binding}"/>
                 </Button>
                 <Button x:Name="Btn7" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image Source="{Binding}"/>
+                    <Image x:Name="Img7" Source="{Binding}"/>
                 </Button>
             </StackPanel>
         </Grid>
