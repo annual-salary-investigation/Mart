@@ -1,0 +1,54 @@
+﻿<mah:MetroWindow x:Class="MartApp.DetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:MartApp"
+        mc:Ignorable="d"
+        Title="detailWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="10" Content="제품명: " FontSize="20" 
+                     HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="0" Margin="10" Content="가격: " FontSize="20" 
+                     HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="3" Grid.Column="0" Margin="10" Content="수량: " FontSize="20" 
+                     HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="장바구니" FontSize="25" 
+                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
+            <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="구매하기" FontSize="25" 
+                     HorizontalAlignment="Right" VerticalAlignment="Center"
+                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
+
+            <Label Grid.Row="1" Grid.Column="1" Margin="10" Content="사과" FontSize="20" 
+                     HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="1" Margin="10" Content="1000원" FontSize="20" 
+                     HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Row="3" Grid.Column="1" Margin="10" Content="2개" FontSize="20" 
+                     HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Image x:Name="Imgproduct" Source="No_Picture.png" Margin="10,5"/>
+        </Grid>
+     </Grid>
+</mah:MetroWindow>
