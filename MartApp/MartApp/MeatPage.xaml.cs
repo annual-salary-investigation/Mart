@@ -4,18 +4,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MartApp
 {
@@ -27,11 +19,11 @@ namespace MartApp
         public MeatPage()
         {
             InitializeComponent();
-            LoadedMeatPage();
         }
 
-        private void LoadedMeatPage()
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             List<MartItem> list = new List<MartItem>();
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
@@ -51,19 +43,14 @@ namespace MartApp
                     var ds = new DataSet();
                     adapter.Fill(ds, "martdb");
 
-                    foreach (DataRow row in ds.Tables["martdb"].Rows)
+                    for (int i = 0; i < ds.Tables["martdb"].Rows.Count; i++)
                     {
-                        list.Add(new MartItem
-                        {
-                            ProductId = Convert.ToInt32(row["ProductId"]),
-                            Product = Convert.ToString(row["Product"]),
-                            Price = Convert.ToInt32(row["Price"]),
-                            Category = Convert.ToString(row["Category"]),
-                            Image = Convert.ToString(row["Image"])
-                        });
+                        Debug.WriteLine($"{i}");
+                        Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
+                        var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
+                        Image image = this.FindName($"Img{i + 1}") as Image;
+                        image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
                     }
-
-                    this.DataContext = list;
                 }
             }
         }

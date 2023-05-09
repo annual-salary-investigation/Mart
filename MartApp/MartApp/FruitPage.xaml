@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:MartApp"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600"
-      Title="FruitPage" Background="AntiqueWhite" Loaded="Page_Loaded">
+      Title="FruitPage" Loaded="Page_Loaded">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="77*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <!--<DataGrid x:Name="GrdResult" Margin="10" 
                   IsReadOnly="True" ItemsSource="{Binding}"
