@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using mart;
+using MartApp.Join;
 using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
@@ -102,6 +103,14 @@ namespace wp01_martui
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             txtId.Focus();
+        }
+
+        private void btnJoin_Click(object sender, RoutedEventArgs e)
+        {
+            var join = new Join();
+            join.Owner = this;
+            join.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            join.ShowDialog();
         }
     }
 }

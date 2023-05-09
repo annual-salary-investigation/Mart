@@ -110,11 +110,17 @@
     <Compile Include="CartWindow.xaml.cs">
       <DependentUpon>CartWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetailWindow.xaml.cs">
+      <DependentUpon>DetailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DrinkPage.xaml.cs">
       <DependentUpon>DrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="FruitPage.xaml.cs">
       <DependentUpon>FruitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Join\Join.xaml.cs">
+      <DependentUpon>Join.xaml</DependentUpon>
     </Compile>
     <Compile Include="Logics\Commons.cs" />
     <Compile Include="LoginWindow.xaml.cs" />
@@ -137,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DrinkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +154,10 @@
     <Page Include="FruitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Join\Join.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="LoginWindow.xaml.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +219,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="No_Picture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
