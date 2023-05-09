@@ -15,11 +15,7 @@
         </Grid.RowDefinitions>
        
         <Grid Grid.Row="0">
-<<<<<<< Updated upstream
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10" Click="Btn1_Click">
-                    <Image x:Name="Img1" />
-=======
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
@@ -28,7 +24,6 @@
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
                     <Image x:Name="Img1" Source="{Binding}"/>
->>>>>>> Stashed changes
                 </Button>
                 <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
                     <Image x:Name="Img2" />
@@ -47,11 +42,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-<<<<<<< Updated upstream
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn4"  Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img4" />
-=======
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
@@ -60,7 +51,6 @@
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
                     <Image x:Name="Img4" Source="{Binding}"/>
->>>>>>> Stashed changes
                 </Button>
                 <Button x:Name="Btn5"  Height="100" Width="100" Margin="10">
                     <Image x:Name="Img5" />

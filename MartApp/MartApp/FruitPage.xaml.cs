@@ -20,10 +20,7 @@ namespace MartApp
         {
             InitializeComponent();
         }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             
