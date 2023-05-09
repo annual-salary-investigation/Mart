@@ -35,10 +35,13 @@
                      HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="장바구니" FontSize="25" 
                      HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
+                    Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"
+                    Click="Button_Click"/>
             <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="구매하기" FontSize="25" 
-                     HorizontalAlignment="Right" VerticalAlignment="Center"
-                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
+                     HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BtnBuy"
+                    Click="BtnBuy_Click"
+                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"
+                    />
 
             <Label Grid.Row="1" Grid.Column="1" Margin="10" Content="사과" FontSize="20" 
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>

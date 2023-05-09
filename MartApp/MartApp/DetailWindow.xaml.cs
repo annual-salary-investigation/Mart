@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using mart;
+using static MartApp.payment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,22 @@ namespace MartApp
         public DetailWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var cartpage = new CartWindow();
+            cartpage.Owner = this;
+            cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            cartpage.ShowDialog();
+        }
+
+        private void BtnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            var cartpage = new payment();
+            cartpage.Owner = this;
+            cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            cartpage.ShowDialog();
         }
     }
 }

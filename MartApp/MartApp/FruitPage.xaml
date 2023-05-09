@@ -22,13 +22,13 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
-                    <Image x:Name="Img1" Source="{Binding}"/>
+                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img1"/>
                 </Button>
-                <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img2" />
+                <Button x:Name="Btn2" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img2"/>
                 </Button>
-                <Button x:Name="Btn3"  Height="100" Width="100" Margin="10">
+                <Button x:Name="Btn3"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img3" />
                 </Button>
             </StackPanel>
@@ -49,16 +49,16 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img4" Source="{Binding}"/>
+                <Button x:Name="Btn4" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img4"/>
                 </Button>
-                <Button x:Name="Btn5"  Height="100" Width="100" Margin="10">
+                <Button x:Name="Btn5"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img5" />
                 </Button>
-                <Button x:Name="Btn6"  Height="100" Width="100" Margin="10">
+                <Button x:Name="Btn6"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img6" />
                 </Button>
-                <Button x:Name="Btn7"  Height="100" Width="100" Margin="10">
+                <Button x:Name="Btn7"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img7" />
                 </Button>
             </StackPanel>
