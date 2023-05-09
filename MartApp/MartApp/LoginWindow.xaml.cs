@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using mart;
+using MartApp.Join;
 using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
