@@ -39,11 +39,27 @@ namespace MartApp.Join
                 await this.ShowMessageAsync("오류", "아이디를 입력하세요", MessageDialogStyle.Affirmative, null);
                 return;
             }
-            if (string.IsNullOrEmpty(txtPassword.Text))
+            if (string.IsNullOrEmpty(txtName.Text))
             {
-                await this.ShowMessageAsync("오류", "패스워드를 입력하세요", MessageDialogStyle.Affirmative, null);
+                await this.ShowMessageAsync("오류", "이름을 입력하세요", MessageDialogStyle.Affirmative, null);
                 return;
             }
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                await this.ShowMessageAsync("오류", "비밀번호를 입력하세요", MessageDialogStyle.Affirmative, null);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPasswordCheck.Text))
+            {
+                await this.ShowMessageAsync("오류", "비밀번호 확인을 입력하세요", MessageDialogStyle.Affirmative, null);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPhoneNum.Text))
+            {
+                await this.ShowMessageAsync("오류", "핸드폰 번호를 입력하세요", MessageDialogStyle.Affirmative, null);
+                return;
+            }
+
             try
             {
                 
@@ -61,8 +77,6 @@ namespace MartApp.Join
                                              @Name,
                                              @PassWord,
                                              @PhoneNum )";
-
-                    var insRes = 0;
 
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
                     cmd.Parameters.AddWithValue("@Id", txtId.Text);
@@ -99,9 +113,52 @@ namespace MartApp.Join
             }
         }
 
+        private void txtId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtId.Text == string.Empty)
+            {
+                IdNotice.Text = "아이디를 입력하시오!";
+            }
+            
+        }
+
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private async void checkId_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                {
+                    if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
+
+                    var insQuery = @"SELECT Id FROM userdb";
+
+                    MySqlCommand cmd = new MySqlCommand(insQuery, conn);
+                    var id = cmd.ToString();
+
+                    if (space)
+
+                    await this.ShowMessageAsync("성공", "성공!!!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private bool hasSpace(string str)
+        {
+            foreach(char c in str)
+            {
+                if (c == ' ') return true;
+            }
+            return false;
         }
     }
 }
