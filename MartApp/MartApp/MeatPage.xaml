@@ -5,13 +5,52 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MartApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MeatPage">
+      d:DesignHeight="700" d:DesignWidth="600"
+      Title="MeatPage" Loaded="Page_Loaded">
 
-    <Grid>
-        <DataGrid x:Name="GrdResult" Margin="10" 
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <!--<DataGrid x:Name="GrdResult" Margin="10" 
                   IsReadOnly="True" ItemsSource="{Binding}"
                   Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
-        </DataGrid>
+        </DataGrid>-->
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
+                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
+                    <Image x:Name="Img1" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img2" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn3" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img3" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img4" Source="{Binding}"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
+                <Button x:Name="Btn5" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img5" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn6" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img6" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn7" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img7" Source="{Binding}"/>
+                </Button>
+                <Button x:Name="Btn8" Style="{Binding}" Height="100" Width="100" Margin="10">
+                    <Image x:Name="Img8" Source="{Binding}"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Page>
