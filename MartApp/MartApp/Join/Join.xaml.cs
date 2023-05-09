@@ -6,6 +6,8 @@ using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,7 +129,7 @@ namespace MartApp.Join
             this.Close();
         }
 
-        private async void checkId_Click(object sender, RoutedEventArgs e)
+        private void checkId_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -139,12 +141,31 @@ namespace MartApp.Join
                     var insQuery = @"SELECT Id FROM userdb";
 
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                    var id = cmd.ToString();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
 
-                    if (space)
+                    adapter.Fill(ds, "userdb");
 
-                    await this.ShowMessageAsync("성공", "성공!!!");
+                    if (hasSpace(txtId.Text))
+                    {
+                        IdNotice.Text = "아이디에 공백이 있습니다!";
+                    }
+                    else
+                    {
+                        IdNotice.Text = "사용 가능한 아이디";
+                    }
 
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        Debug.WriteLine(row["Id"]);
+
+                        if ( txtId.Text == row["Id"].ToString() )
+                        {
+                            IdNotice.Text = "※ 중복 아이디 ※";
+                        }
+                    }
+
+                    conn.Close();
                 }
             }
             catch (Exception ex)

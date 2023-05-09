@@ -15,10 +15,11 @@
             <Label Content="아이디" Width="204" />
             <TextBox x:Name="txtId" FontSize="18" Width="200" Style="{StaticResource MahApps.Styles.TextBox}" 
                      mah:TextBoxHelper.Watermark="아이디를 입력하세요" 
-                     mah:TextBoxHelper.UseFloatingWatermark="True"/>
-            <StackPanel>
-                <Button x:Name="checkId" Content="아이디 확인" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="IdNotice" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                     mah:TextBoxHelper.UseFloatingWatermark="True"
+                     TextChanged="txtId_TextChanged"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="checkId" Content="아이디 확인" HorizontalAlignment="Center" Click="checkId_Click"/>
+                <TextBlock x:Name="IdNotice" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
 
             <Label Content="이름" Width="204" />
