@@ -43,7 +43,7 @@
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnOk" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Click="btnOk_Click"></Button>
-                <Button x:Name="btnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35"/>
+                <Button x:Name="btnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnCancel_Click"/>
 
             </StackPanel>
         </StackPanel>
