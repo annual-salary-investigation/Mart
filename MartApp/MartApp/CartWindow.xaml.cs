@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MartApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,13 +34,15 @@ namespace mart
 
         private void BtnMart_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
+            this.Close();
         }
 
         private void BtnPayment_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute));
-
+            var Payment = new payment();
+            Payment.Owner = this;
+            Payment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            Payment.ShowDialog();
         }
     }
 }
