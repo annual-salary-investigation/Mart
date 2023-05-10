@@ -54,7 +54,7 @@ namespace MartApp
                         // 라벨
                         // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
                         var LblContent = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
-                        Label label = this.FindName($"Lbl{i+1}") as Label;
+                        Label label = this.FindName($"Lbl{i + 1}") as Label;
                         label.Content = LblContent;
 
 

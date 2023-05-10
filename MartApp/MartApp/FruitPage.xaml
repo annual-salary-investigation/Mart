@@ -13,23 +13,26 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-       
+
         <Grid Grid.Row="0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
-            <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+
+
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="110,0,0,0">
                 <Button x:Name="Btn1" Height="100" Width="100"  Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img1"/>
                 </Button>
+
                 <Button x:Name="Btn2" Height="100" Width="100" Margin="10" Click="Btn1_Click">
                     <Image x:Name="Img2"/>
                 </Button>
-                <Button x:Name="Btn3"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
-                    <Image x:Name="Img3" />
+            
+                <Button x:Name="Btn3" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img3"/>
                 </Button>
             </StackPanel>
 
@@ -38,7 +41,7 @@
                 <Label x:Name="Lbl2" Height="50" Width="100" Margin="10"/>
                 <Label x:Name="Lbl3" Height="50" Width="100" Margin="10"/>
             </StackPanel>
-            
+
         </Grid>
 
         <Grid Grid.Row="1">
@@ -70,6 +73,6 @@
                 <Label x:Name="Lbl7" Height="50" Width="100" Margin="10"/>
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </Page>

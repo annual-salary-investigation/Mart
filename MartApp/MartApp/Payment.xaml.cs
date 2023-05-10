@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
 
 namespace MartApp
@@ -15,15 +16,14 @@ namespace MartApp
 
         private void BtnNo_Click(object sender, RoutedEventArgs e)
         {
-            // 장바구니로 돌아가기
-            //NavigationService.Navigate(new Uri("/ .xaml", UriKind.RelativeOrAbsolute)); 
+            this.Close();
         }
 
         private void BtnPayment_Click(object sender, RoutedEventArgs e)
         {
             // 결제완료 팝업창
 
-            //this.ShowMessageAsync("결제 완료", "결제가 완료되었습니다.");
+            this.ShowMessageAsync("결제 완료", "10분 후 픽업가능합니다.");
         }
     }
 }
