@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MartApp"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600"
-      Title="MeatPage" Loaded="Page_Loaded">
+      Title="MeatPage" Loaded="Page_Loaded" Style="{StaticResource MahApps.Styles.Page}">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -25,17 +25,17 @@
             </Grid.RowDefinitions>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10">
-                    <Image x:Name="Img1" Source="{Binding}"/>
+                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img1" />
                 </Button>
-                <Button x:Name="Btn2" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img2" Source="{Binding}"/>
+                <Button x:Name="Btn2" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img2" />
                 </Button>
-                <Button x:Name="Btn3" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img3" Source="{Binding}"/>
+                <Button x:Name="Btn3"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img3" />
                 </Button>
-                <Button x:Name="Btn4" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img4" Source="{Binding}"/>
+                <Button x:Name="Btn4"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img4" />
                 </Button>
             </StackPanel>
 
@@ -55,17 +55,17 @@
             </Grid.RowDefinitions>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn5" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img5" Source="{Binding}"/>
+                <Button x:Name="Btn5"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img5" />
                 </Button>
-                <Button x:Name="Btn6" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img6" Source="{Binding}"/>
+                <Button x:Name="Btn6"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img6" />
                 </Button>
-                <Button x:Name="Btn7" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img7" Source="{Binding}"/>
+                <Button x:Name="Btn7" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img7" />
                 </Button>
-                <Button x:Name="Btn8" Style="{Binding}" Height="100" Width="100" Margin="10">
-                    <Image x:Name="Img8" Source="{Binding}"/>
+                <Button x:Name="Btn8" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                    <Image x:Name="Img8" />
                 </Button>
             </StackPanel>
 
