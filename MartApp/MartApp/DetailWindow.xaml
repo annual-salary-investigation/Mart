@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
         Title="detailWindow" Height="450" Width="800" Loaded="MetroWindow_Loaded">
@@ -47,8 +48,17 @@
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Grid.Row="2" Grid.Column="1" Margin="10" Content="1000원" FontSize="20" x:Name="LblPrice"
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Row="3" Grid.Column="1" Margin="10" Content="2개" FontSize="20" 
-                     HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Grid.Row="3" Grid.Column="1" Margin="10" Content="2개" FontSize="20" 
+                         HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button Grid.Row="3" Grid.Column="1" Margin="5,10" >
+                    <iconPacks:JamIcons Kind="Plus"/>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="1" Margin="5,10" >
+                    <iconPacks:JamIcons Kind="Minus"/>
+                </Button>
+                
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <Image x:Name="ImgProduct" Source="/No_Picture.png" Margin="10,5"/>

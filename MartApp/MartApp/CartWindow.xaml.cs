@@ -1,5 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MartApp;
+using MartApp.Logics;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,10 @@ namespace mart
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            using(MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+            {
+                if(conn.State == System.Data.ConnectionState.Closed) conn.Open();
+            }
         }
 
         private void BtnMart_Click(object sender, RoutedEventArgs e)
