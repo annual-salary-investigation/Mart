@@ -1,19 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using mart;
-using static MartApp.payment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MartApp
 {
@@ -22,9 +9,16 @@ namespace MartApp
     /// </summary>
     public partial class DetailWindow : MetroWindow
     {
+        private int productId; // 부모창에서 넘어온 ProductID(DB 키값)
+
         public DetailWindow()
         {
-            InitializeComponent();
+            InitializeComponent();       
+        }
+
+        public DetailWindow(int productId)
+        {
+            this.productId = productId;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,6 +35,11 @@ namespace MartApp
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

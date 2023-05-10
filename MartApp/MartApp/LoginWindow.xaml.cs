@@ -1,23 +1,22 @@
-﻿using MahApps.Metro.Controls;
+﻿using Google.Protobuf;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using mart;
-using MartApp.Join;
 using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
+using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Input;
 
-namespace wp01_martui
+namespace MartApp
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
     public partial class LoginWindow : MetroWindow
     {
-
-
         public LoginWindow()
         {
             InitializeComponent();
@@ -26,7 +25,7 @@ namespace wp01_martui
         // 로그인 버튼
         private async void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            
+
             string strtxtId = "";
             string strtxtPassword = "";
             string password = txtPassword.Password;
@@ -78,10 +77,11 @@ namespace wp01_martui
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 await this.ShowMessageAsync("로그인 오류", $"{ex.Message}", MessageDialogStyle.Affirmative, null);
             }
+            
         }
 
         private void txtId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -112,7 +112,12 @@ namespace wp01_martui
             join.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             join.ShowDialog();
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Process.GetCurrentProcess().Kill();
+        }
     }
 }
 
-               
+

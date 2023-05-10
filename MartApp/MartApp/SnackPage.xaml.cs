@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,6 +27,7 @@ namespace MartApp
     /// </summary>
     public partial class SnackPage : Page
     {
+
         public SnackPage()
         {
             InitializeComponent();
@@ -55,8 +57,9 @@ namespace MartApp
 
                     for (int i = 0; i < ds.Tables["martdb"].Rows.Count; i++)
                     {
-                        Debug.WriteLine($"{i}");
-                        Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
+                        // 이미지
+                        //Debug.WriteLine($"{i}");
+                        //Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
                         var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
                         Image image = this.FindName($"Img{i + 1}") as Image;
                         image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
@@ -80,6 +83,7 @@ namespace MartApp
 
         private void CartWindowShow()
         {
+
             var detailWindow = new DetailWindow();
             detailWindow.ShowDialog();
         }

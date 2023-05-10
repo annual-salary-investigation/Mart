@@ -119,11 +119,13 @@
     <Compile Include="FruitPage.xaml.cs">
       <DependentUpon>FruitPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Join\Join.xaml.cs">
+    <Compile Include="Join.xaml.cs">
       <DependentUpon>Join.xaml</DependentUpon>
     </Compile>
     <Compile Include="Logics\Commons.cs" />
-    <Compile Include="LoginWindow.xaml.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MeatPage.xaml.cs">
       <DependentUpon>MeatPage.xaml</DependentUpon>
     </Compile>
@@ -158,13 +160,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Join\Join.xaml">
+    <Page Include="Join.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LoginWindow.xaml.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

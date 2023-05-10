@@ -1,11 +1,11 @@
-﻿<mah:MetroWindow x:Class="MartApp.Join.Join"
+﻿<mah:MetroWindow x:Class="MartApp.Join"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:local="clr-namespace:MartApp.Join"
+        xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
         Title="Join" Height="600" Width="600">
     <Grid>
@@ -28,16 +28,17 @@
                     mah:TextBoxHelper.UseFloatingWatermark="True"/>
             
             <Label Content="비밀번호" Width="204"/>
-            <TextBox x:Name="txtPassword" FontSize="18" Width="200"                  
+            <PasswordBox FontSize="18" Width="200" 
+                         x:Name="txtPassword"
                      mah:TextBoxHelper.Watermark="비밀번호를 입력하시오" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     TextChanged="txtPassword_TextChanged"/>
+                     DataContextChanged="txtPassword_TextChanged"/>
             
             <Label Content="비밀번호 확인" Width="204" />
-            <TextBox x:Name="txtPasswordCheck" FontSize="18" Width="200"                      
+            <PasswordBox x:Name="txtPasswordCheck" FontSize="18" Width="200"                      
                      mah:TextBoxHelper.Watermark="비밀번호를 확인하시오" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     TextChanged="txtPassword_TextChanged"/>
+                     DataContextChanged="txtPassword_TextChanged"/>
             <TextBlock x:Name="PWNotice" FontSize="12" TextWrapping="Wrap"
                        HorizontalAlignment="Center"/>
 
