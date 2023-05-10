@@ -22,24 +22,27 @@
             </Grid.RowDefinitions>
 
 
-            <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="110,0,0,0">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="10" Click="Btn1_Click">
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Btn1" Height="100" Width="100"  Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img1"/>
                 </Button>
 
-                <Button x:Name="Btn2" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn2" Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img2"/>
                 </Button>
             
-                <Button x:Name="Btn3" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn3" Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img3"/>
                 </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="Lbl1" Height="50" Width="100" Margin="10"/>
-                <Label x:Name="Lbl2" Height="50" Width="100" Margin="10"/>
-                <Label x:Name="Lbl3" Height="50" Width="100" Margin="10"/>
+                <TextBlock x:Name="Txb1" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock x:Name="Txb2" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock x:Name="Txb3" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
             </StackPanel>
 
         </Grid>
@@ -52,25 +55,29 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Btn4" Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn4" Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img4"/>
                 </Button>
-                <Button x:Name="Btn5"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn5"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img5" />
                 </Button>
-                <Button x:Name="Btn6"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn6"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img6" />
                 </Button>
-                <Button x:Name="Btn7"  Height="100" Width="100" Margin="10" Click="Btn1_Click">
+                <Button x:Name="Btn7"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
                     <Image x:Name="Img7" />
                 </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="Lbl4" Height="50" Width="100" Margin="10"/>
-                <Label x:Name="Lbl5" Height="50" Width="100" Margin="10"/>
-                <Label x:Name="Lbl6" Height="50" Width="100" Margin="10"/>
-                <Label x:Name="Lbl7" Height="50" Width="100" Margin="10"/>
+                <TextBlock x:Name="Txb4" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock x:Name="Txb5" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock x:Name="Txb6" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock x:Name="Txb7" Height="50" Width="100" Margin="20" 
+                           FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
             </StackPanel>
         </Grid>
 

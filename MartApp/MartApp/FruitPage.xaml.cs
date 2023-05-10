@@ -55,9 +55,9 @@ namespace MartApp
                         btn.Tag = Convert.ToInt32(ds.Tables["martdb"].Rows[i]["ProductId"]); // 태그 각 컨트롤내 숨기고 싶은 값을 가지고 가도록 해주는 속성
                         // 라벨
                         // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
-                        var LblContent = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
-                        Label label = this.FindName($"Lbl{i + 1}") as Label;
-                        label.Content = LblContent;
+                        var TxbText = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
+                        TextBlock textBlock = this.FindName($"Txb{i + 1}") as TextBlock;
+                        textBlock.Text = TxbText;
 
 
                     }

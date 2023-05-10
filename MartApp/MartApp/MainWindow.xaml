@@ -12,6 +12,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
@@ -21,13 +22,24 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="BtnSelFruit" Content="과일" Click="BtnSelFruit_Click" Width="100"
                     Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelVege" Content="채소" Click="BtnSelVege_Click"/>
-            <Button x:Name="BtnSelMeat" Content="육류" Click="BtnSelMeat_Click"/>
-            <Button x:Name="BtnSelSeafood" Content="수산" Click="BtnSelSeafood_Click"/>
-            <Button x:Name="BtnSelSnack" Content="과자" Click="BtnSelSnack_Click"/>
-            <Button x:Name="BtnSelDrink" Content="음료" Click="BtnSelDrink_Click"/>
+            <Button x:Name="BtnSelVege" Content="채소" Click="BtnSelVege_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            <Button x:Name="BtnSelMeat" Content="육류" Click="BtnSelMeat_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            <Button x:Name="BtnSelSeafood" Content="수산" Click="BtnSelSeafood_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            <Button x:Name="BtnSelSnack" Content="과자" Click="BtnSelSnack_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            <Button x:Name="BtnSelDrink" Content="음료" Click="BtnSelDrink_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
         </StackPanel>
 
-        <Frame x:Name="CategoryPage" NavigationUIVisibility="Hidden" Grid.Row="2"/>
+        <Frame Grid.Row="2" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10"/>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem Content="Mart APP"/>
+            <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
+            <StatusBarItem x:Name="StsResult"/>
+        </StatusBar>
     </Grid>
 </mah:MetroWindow>

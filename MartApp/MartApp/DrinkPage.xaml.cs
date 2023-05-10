@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 namespace MartApp
 {
@@ -52,9 +53,9 @@ namespace MartApp
 
                         // 라벨
                         // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
-                        var LblContent = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
-                        Label label = this.FindName($"Lbl{i + 1}") as Label;
-                        label.Content = LblContent;
+                        var TxbText = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
+                        TextBlock textBlock = this.FindName($"Txb{i + 1}") as TextBlock;
+                        textBlock.Text = TxbText;
                     }
                 }
             }
