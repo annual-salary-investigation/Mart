@@ -1,4 +1,5 @@
-﻿using MartApp.Logics;
+﻿using mart;
+using MartApp.Logics;
 using MartApp.Models;
 using MySql.Data.MySqlClient;
 using System;
@@ -59,6 +60,17 @@ namespace MartApp
                     }
                 }
             }
+        }
+
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            CartWindowShow();
+        }
+
+        private void CartWindowShow()
+        {
+            var detailWindow = new DetailWindow();
+            detailWindow.ShowDialog();
         }
     }
 }

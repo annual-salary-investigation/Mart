@@ -29,7 +29,7 @@ namespace MartApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var cartpage = new CartWindow();
+            var cartpage = new CartWindow();            // CartWindow 장바구니창
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();
@@ -37,7 +37,7 @@ namespace MartApp
 
         private void BtnBuy_Click(object sender, RoutedEventArgs e)
         {
-            var cartpage = new payment();
+            var cartpage = new payment();           // payment 결제창
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();

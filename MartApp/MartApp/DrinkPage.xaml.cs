@@ -59,5 +59,16 @@ namespace MartApp
                 }
             }
         }
+
+        private void Btn1_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CartWindowShow();
+        }
+
+        private void CartWindowShow()
+        {
+            var detailWindow = new DetailWindow();
+            detailWindow.ShowDialog();
+        }
     }
 }
