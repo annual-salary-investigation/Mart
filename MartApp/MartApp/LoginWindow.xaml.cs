@@ -112,11 +112,6 @@ namespace MartApp
             join.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             join.ShowDialog();
         }
-
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // Process.GetCurrentProcess().Kill();
-        }
     }
 }
 

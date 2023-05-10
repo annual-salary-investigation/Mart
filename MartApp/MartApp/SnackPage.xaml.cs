@@ -64,6 +64,9 @@ namespace MartApp
                         Image image = this.FindName($"Img{i + 1}") as Image;
                         image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
 
+                        Button btn = this.FindName($"Btn{i + 1}") as Button;
+                        btn.Tag = Convert.ToInt32(ds.Tables["martdb"].Rows[i]["ProductId"]); // 태그 각 컨트롤내 숨기고 싶은 값을 가지고 가도록 해주는 속성
+
                         // 라벨
                         // Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Product"]}");
                         var TxbText = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
@@ -80,13 +83,13 @@ namespace MartApp
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
-            CartWindowShow();
+            Button clickedButton = sender as Button;
+            CartWindowShow((int)clickedButton.Tag);
         }
 
-        private void CartWindowShow()
+        private void CartWindowShow(int productId)
         {
-
-            var detailWindow = new DetailWindow();
+            var detailWindow = new DetailWindow(productId);
             detailWindow.ShowDialog();
         }
     }

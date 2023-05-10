@@ -8,7 +8,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="TT Mart" Height="320" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
+        Title="TT Mart" Height="320" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
     <StackPanel>
         <Label Content="로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" ></Label>
         <Label Content="아이디" Width="204" />

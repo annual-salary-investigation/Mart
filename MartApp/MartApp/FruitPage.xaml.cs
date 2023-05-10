@@ -45,8 +45,8 @@ namespace MartApp
 
                     for (int i = 0; i < ds.Tables["martdb"].Rows.Count; i++)
                     {
-                        Debug.WriteLine($"{i}");
-                        Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
+                        //Debug.WriteLine($"{i}");
+                        //Debug.WriteLine($"{ds.Tables["martdb"].Rows[i]["Image"]}");
                         var imgSource = Convert.ToString(ds.Tables["martdb"].Rows[i]["Image"]);
                         Image image = this.FindName($"Img{i + 1}") as Image;
                         image.Source = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
@@ -58,8 +58,6 @@ namespace MartApp
                         var TxbText = Convert.ToString(ds.Tables["martdb"].Rows[i]["Product"]);
                         TextBlock textBlock = this.FindName($"Txb{i + 1}") as TextBlock;
                         textBlock.Text = TxbText;
-
-
                     }
                 }
             }
