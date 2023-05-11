@@ -24,6 +24,8 @@ namespace MartApp
 
         private int currCount = 0;  // 현재 수량 확인 변수
 
+        DataSet ds = new DataSet(); // martDB 데이터
+
         public DetailWindow()
         {
             InitializeComponent();       
@@ -34,14 +36,55 @@ namespace MartApp
             this.productId = productId;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            // DB insert 테스트
+            try
+            {
+                var insRes = 0;
+
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                {
+                    if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                    string insQuery = @"INSERT INTO orderdb
+                                                   ( ProductId,
+
+                                                     Product,
+                                                     Price,
+
+                                                     Category,
+                                                     Image,
+                                                     DateTime)
+                                                     VALUES
+                                                   ( @ProductId,
+
+                                                     @Product,
+                                                     @Price,
+
+                                                     @Category,
+                                                     @Image,
+                                                     @DateTime )";
+
+                    MySqlCommand cmd = new MySqlCommand(insQuery, conn);
+                    cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                    //cmd.Parameters.AddWithValue("@Id", "user");
+                    cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
+                    cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
+                    //cmd.Parameters.AddWithValue("@Count", 1);
+                    cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
+                    cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                    insRes += cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                await this.ShowMessageAsync("오류", $"DB연결오류 {ex.Message}", MessageDialogStyle.Affirmative, null);
+            }
+
             var cartpage = new CartWindow();            // CartWindow 장바구니창
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();
-            
-            
         }
 
         private void BtnBuy_Click(object sender, RoutedEventArgs e)
@@ -74,7 +117,7 @@ namespace MartApp
                     var cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@ProductId", this.productId);
                     var adapter = new MySqlDataAdapter(cmd);
-                    var ds = new DataSet();
+                    
                     adapter.Fill(ds, "martdb");
 
                     if (ds.Tables["martdb"].Rows.Count == 1)
