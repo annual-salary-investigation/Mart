@@ -120,7 +120,7 @@ namespace MartApp
                     var cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@ProductId", this.productId);
                     var adapter = new MySqlDataAdapter(cmd);
-                    
+                    // var ds = new DataSet();
                     adapter.Fill(ds, "martdb");
 
                     if (ds.Tables["martdb"].Rows.Count == 1)
