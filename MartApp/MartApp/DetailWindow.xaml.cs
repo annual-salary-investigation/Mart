@@ -48,33 +48,36 @@ namespace MartApp
                     if (conn.State == ConnectionState.Closed) { conn.Open(); }
                     string insQuery = @"INSERT INTO orderdb
                                                    ( ProductId,
-
+                                                     Id,
                                                      Product,
                                                      Price,
-
+                                                     Count,
                                                      Category,
                                                      Image,
                                                      DateTime)
                                                      VALUES
                                                    ( @ProductId,
-
+                                                     @Id,
                                                      @Product,
                                                      @Price,
-
+                                                     @Count,
                                                      @Category,
                                                      @Image,
                                                      @DateTime )";
-
+                    
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
                     cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
-                    //cmd.Parameters.AddWithValue("@Id", "user");
+                    // cmd.Parameters.AddWithValue("@Id", );
                     cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
                     cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
-                    //cmd.Parameters.AddWithValue("@Count", 1);
+                    cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                    cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
                     cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
                     cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
                     insRes += cmd.ExecuteNonQuery();
                 }
+
+                MessageBox.Show("DB저장성공", "저장");
             }
             catch (Exception ex)
             {
