@@ -22,7 +22,7 @@ namespace MartApp
     {
         private int productId; // 부모창에서 넘어온 ProductID(DB 키값)
 
-        
+        private int currCount = 0;
 
         public DetailWindow()
         {
@@ -98,6 +98,32 @@ namespace MartApp
 
                     
                 }
+            }
+        }
+
+        private void btnPlus_Click(object sender, RoutedEventArgs e)
+        {
+            if (currCount < 99)
+            {
+                currCount++;
+                lblCount.Content = currCount.ToString();
+            }
+            else
+            {
+                this.ShowMessageAsync("오류", "상품은 최대 99개까지 가능합니다!");
+            }
+        }
+
+        private void btnMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (currCount > 0)
+            {
+                currCount--;
+                lblCount.Content = currCount.ToString();
+            }
+            else
+            {
+                this.ShowMessageAsync("오류", "상품이 적어도 1개는 필요합니다!");
             }
         }
     }
