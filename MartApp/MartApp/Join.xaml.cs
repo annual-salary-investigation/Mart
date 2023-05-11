@@ -112,25 +112,6 @@ namespace MartApp
 
         }
 
-        //private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    if (txtPassword.Password == string.Empty)
-        //    {
-        //        PWNotice.Text = "비밀번호 일치 확인";
-        //    }
-        //    else if (txtPassword.Password.Equals(txtPasswordCheck.Password, StringComparison.Ordinal))
-        //    {
-
-        //        PWNotice.Text = "비밀번호가 일치합니다.";
-
-        //    }
-        //    else
-        //    {
-        //        PWNotice.Text = "비밀번호가 일치하지 않습니다.";
-
-        //    }
-        //}
-
         private void txtId_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtId.Text == string.Empty)
@@ -190,6 +171,7 @@ namespace MartApp
             }
             catch (Exception ex)
             {
+                this.ShowMessageAsync("오류", $"오류 : {ex.Message}");
             }
         }
 
@@ -210,14 +192,11 @@ namespace MartApp
             }
             else if (txtPassword.Password.Equals(txtPasswordCheck.Password, StringComparison.Ordinal))
             {
-
                 PWNotice.Text = "비밀번호가 일치합니다.";
-
             }
             else
             {
                 PWNotice.Text = "비밀번호가 일치하지 않습니다.";
-
             }
         }
     }

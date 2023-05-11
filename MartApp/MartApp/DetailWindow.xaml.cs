@@ -22,7 +22,7 @@ namespace MartApp
     {
         private int productId; // 부모창에서 넘어온 ProductID(DB 키값)
 
-        private int currCount = 0;
+        private int currCount = 0;  // 현재 수량 확인 변수
 
         public DetailWindow()
         {
@@ -34,7 +34,7 @@ namespace MartApp
             this.productId = productId;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var cartpage = new CartWindow();            // CartWindow 장바구니창
             cartpage.Owner = this;
