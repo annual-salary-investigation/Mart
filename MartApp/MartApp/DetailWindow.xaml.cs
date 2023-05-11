@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using mart;
 using MartApp.Logics;
 using MartApp.Models;
@@ -21,6 +22,8 @@ namespace MartApp
     {
         private int productId; // 부모창에서 넘어온 ProductID(DB 키값)
 
+        
+
         public DetailWindow()
         {
             InitializeComponent();       
@@ -31,12 +34,14 @@ namespace MartApp
             this.productId = productId;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var cartpage = new CartWindow();            // CartWindow 장바구니창
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();
+            
+            
         }
 
         private void BtnBuy_Click(object sender, RoutedEventArgs e)

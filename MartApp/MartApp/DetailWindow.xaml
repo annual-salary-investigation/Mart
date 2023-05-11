@@ -7,10 +7,10 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="detailWindow" Height="450" Width="800" Loaded="MetroWindow_Loaded">
+        Title="detailWindow" Height="400" Width="600" Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="270"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
@@ -34,15 +34,18 @@
                      HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Label Grid.Row="3" Grid.Column="0" Margin="10" Content="수량: " FontSize="20" 
                      HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="장바구니" FontSize="25" 
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                        Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="10" Content="장바구니" FontSize="25" 
                      HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"
                     Click="Button_Click"/>
-            <Button Grid.Row="4" Grid.Column="1" Margin="10" Content="구매하기" FontSize="25" 
+                <Button Margin="10" Content="구매하기" FontSize="25" 
                      HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BtnBuy"
                     Click="BtnBuy_Click"
-                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"
-                    />
+                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
+            </StackPanel>
+            
 
             <Label Grid.Row="1" Grid.Column="1" Margin="10" Content="사과" FontSize="20" x:Name="LblProductName"
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -61,7 +64,10 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
-            <Image x:Name="ImgProduct" Source="/No_Picture.png" Margin="10,5"/>
+            <GroupBox Margin="20, 40, 0, 40" Header="제품이미지" mah:HeaderedControlHelper.HeaderFontFamily="NanumGothic"
+                      mah:HeaderedControlHelper.HeaderHorizontalContentAlignment="Center" Height="280" Width="230">
+                <Image x:Name="ImgProduct" Source="/No_Picture.png"/>
+            </GroupBox>
         </Grid>
      </Grid>
 </mah:MetroWindow>
