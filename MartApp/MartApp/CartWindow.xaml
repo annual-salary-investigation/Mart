@@ -8,7 +8,7 @@
         xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:mart"
         mc:Ignorable="d"
-        Title="Cart" Height="450" Width="800" FontFamily="NanumGothic">
+        Title="Cart" Height="450" Width="800" FontFamily="NanumGothic" Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -23,14 +23,22 @@
                   IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
                   ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ProductId}" Header="번호" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding Image}" Header="제품 사진" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding Product}" Header="상품명" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding Price}" Header="가격" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding Count}" Header="수량" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding DateTime}" Header="주문 시간" FontWeight="Bold"/>
-                <!-- <DataGridTextColumn Binding="{Binding Id}" Header="제품 번호" FontWeight="Bold"/> -->
-                <!-- <DataGridTextColumn Binding="{Binding Category}" Header="카테고리" FontWeight="Bold"/> -->
+                <!--<DataGridTextColumn Binding="{Binding ProductId}" Header="번호" FontWeight="Bold"/>-->
+                <!--<DataGridTextColumn Binding="{Binding Image}" Header="제품 사진" FontWeight="Bold"/>-->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image x:Name="Img" Source="{Binding Image}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn  Binding="{Binding Image}" Header="상품이미지"/>
+                <DataGridTextColumn Binding="{Binding Product}" Header="상품명" />
+                <DataGridTextColumn Binding="{Binding Price}" Header="가격" />
+                <DataGridTextColumn Binding="{Binding Count}" Header="수량" />
+                <DataGridTextColumn Binding="{Binding Category}" Header="카테고리"/>
+                <DataGridTextColumn Binding="{Binding DateTime}" Header="주문 시간"/>
             </DataGrid.Columns>
         </DataGrid>
         
