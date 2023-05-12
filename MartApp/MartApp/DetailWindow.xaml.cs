@@ -95,7 +95,7 @@ namespace MartApp
                         cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
                         cmd.Parameters.AddWithValue("@Id", Commons.Id);
                         cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
-                        cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
+                        cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
                         cmd.Parameters.AddWithValue("@Count", lblCount.Content);
                         cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
                         cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
