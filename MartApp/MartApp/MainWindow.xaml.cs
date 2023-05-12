@@ -2,20 +2,8 @@
 using mart;
 using MartApp.Logics;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MartApp
 {
@@ -40,28 +28,32 @@ namespace MartApp
         {
             CategoryPage.Source = new Uri("VegePage.xaml", UriKind.Relative);
         }
-
-        // 
+        
+        // 육류 페이지 이동
         private void BtnSelMeat_Click(object sender, RoutedEventArgs e)
         {
             CategoryPage.Source = new Uri("MeatPage.xaml", UriKind.Relative);
         }
 
+        // 수산 페이지 이동
         private void BtnSelSeafood_Click(object sender, RoutedEventArgs e)
         {
             CategoryPage.Source = new Uri("SeafoodPage.xaml", UriKind.Relative);
         }
 
+        // 스낵 페이지 이동
         private void BtnSelSnack_Click(object sender, RoutedEventArgs e)
         {
             CategoryPage.Source = new Uri("SnackPage.xaml", UriKind.Relative);
         }
 
+        // 음료 페이지 이동
         private void BtnSelDrink_Click(object sender, RoutedEventArgs e)
         {
             CategoryPage.Source = new Uri("DrinkPage.xaml", UriKind.Relative);
         }
 
+        // 장바구니 버튼 클릭 이벤트
         private void BtnCart_Click(object sender, RoutedEventArgs e)
         {
             var cartpage = new CartWindow();
@@ -70,6 +62,7 @@ namespace MartApp
             cartpage.ShowDialog();
         }
 
+        // MetroWindow 창이 로드 되었을때 로그인 창이 먼저 띄어지게 함
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var loginpage = new LoginWindow();
@@ -85,7 +78,8 @@ namespace MartApp
                 this.Close();
             }
         }
-
+        
+        //MetroWindow가 종료되면 프로세스도 종료
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Process.GetCurrentProcess().Kill();

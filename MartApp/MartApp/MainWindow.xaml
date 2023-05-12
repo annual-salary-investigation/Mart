@@ -16,7 +16,8 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
-        <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Left" Click="BtnCart_Click" Margin="548,0,0,0"/>
+        <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
+                Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
 
         <!--카테고리-->
         <StackPanel Grid.Row="1" Orientation="Horizontal">

@@ -3,11 +3,13 @@ using MahApps.Metro.Controls.Dialogs;
 using mart;
 using MartApp.Logics;
 using MartApp.Models;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Security.AccessControl;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -25,6 +27,8 @@ namespace MartApp
         private int currCount = 0;  // 현재 수량 확인 변수
 
         DataSet ds = new DataSet(); // martDB 데이터
+        
+        //DataSet usds = new DataSet(); // userDB 데이터
 
         public DetailWindow()
         {
@@ -38,7 +42,6 @@ namespace MartApp
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            // DB insert 테스트
             try
             {
                 var insRes = 0;
@@ -66,8 +69,10 @@ namespace MartApp
                                                      @DateTime )";
                     
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
+                    var adapter = new MySqlDataAdapter(cmd);
+                    
                     cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
-                    // cmd.Parameters.AddWithValue("@Id", );
+                    cmd.Parameters.AddWithValue("@Id", Commons.Id);
                     cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
                     cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
                     cmd.Parameters.AddWithValue("@Count", lblCount.Content);
@@ -77,6 +82,7 @@ namespace MartApp
                     insRes += cmd.ExecuteNonQuery();
                 }
 
+                //this.MettroWindow_Question
                 MessageBox.Show("DB저장성공", "저장");
             }
             catch (Exception ex)
@@ -88,6 +94,31 @@ namespace MartApp
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog();
+        }
+
+        private async void MettroWindow_Question(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+
+            var mySettings = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "확인",
+                NegativeButtonText = "취소",
+                AnimateShow = true,
+                AnimateHide = true,
+            };
+
+            var result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?",
+                                                     MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+            if (result == MessageDialogResult.Negative)
+            {
+                e.Cancel = true;
+            }
+            else if (result == MessageDialogResult.Affirmative)
+            {
+                return;
+            }
         }
 
         private void BtnBuy_Click(object sender, RoutedEventArgs e)
@@ -120,7 +151,7 @@ namespace MartApp
                     var cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@ProductId", this.productId);
                     var adapter = new MySqlDataAdapter(cmd);
-                    // var ds = new DataSet();
+                    // var ds = new DataSet(); 
                     adapter.Fill(ds, "martdb");
 
                     if (ds.Tables["martdb"].Rows.Count == 1)
@@ -142,7 +173,18 @@ namespace MartApp
                         LblPrice.Content = productPrice;
                     }
 
-                    
+                    var insquery = @"SELECT ProductId
+                                          , Id
+                                          , Product
+                                          , Price
+                                          , Count
+                                          , Category
+                                          , Image
+                                          , DateTime
+                                       FROM orderdb;";
+
+
+
                 }
             }
         }

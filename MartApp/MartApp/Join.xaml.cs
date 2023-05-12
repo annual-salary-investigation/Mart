@@ -1,25 +1,12 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MartApp.Logics;
-using MartApp.Models;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Relational;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MartApp
 {
@@ -72,13 +59,15 @@ namespace MartApp
 
             try
             {
-                
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                 {
-                    if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
 
                     var insQuery = @"INSERT INTO userdb
-                                             (Id,
+                                            (Id,
                                              Name,
                                              PassWord,
                                              PhoneNum)
@@ -94,7 +83,8 @@ namespace MartApp
                     cmd.Parameters.AddWithValue("@PassWord", txtPassword.Password);
                     cmd.Parameters.AddWithValue("@PhoneNum", txtPhoneNum.Text);
 
-                    // 명령객체 실행구문                    
+                    // 명령객체 실행구문
+                    // 영향을 받은 행수를 반환함 => 회원가입이니까 1밖에 나올 수 없음
                     if (cmd.ExecuteNonQuery() == 1) {
                         await this.ShowMessageAsync("회원가입", "회원가입 성공!!!");
                         this.Close();
@@ -109,7 +99,6 @@ namespace MartApp
             {
                 await this.ShowMessageAsync("로그인 오류", $"{ex.Message}", MessageDialogStyle.Affirmative, null);
             }
-
         }
 
         private void txtId_TextChanged(object sender, TextChangedEventArgs e)
@@ -126,11 +115,11 @@ namespace MartApp
             this.Close();
         }
 
+        // 중복 아이디 확인
         private void checkId_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                 {
                     if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
@@ -141,7 +130,7 @@ namespace MartApp
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
 
-                    adapter.Fill(ds, "userdb");
+                    adapter.Fill(ds, "userdb"); // userdb의 값을 ds에 채움
 
                     if (hasSpace(txtId.Text))
                     {
@@ -165,7 +154,6 @@ namespace MartApp
                             IdNotice.Text = "※ 중복 아이디 ※";
                         }
                     }
-
                     conn.Close();
                 }
             }
