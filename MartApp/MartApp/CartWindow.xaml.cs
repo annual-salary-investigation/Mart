@@ -94,12 +94,7 @@ namespace mart
                     GrdCart.ItemsSource = list; // 이미지 띄움
                     StsResult.Content = $"장바구니 {list.Count} 건 조회";
 
-
-
-
-
-
-
+                    // 총 합계금액
                     query = $@"SELECT Id,
                                       SUM(Price) AS Total
                                  FROM orderdb
@@ -110,12 +105,10 @@ namespace mart
                     ds = new DataSet();
                     adapter.Fill(ds, "orderdb");
 
-                    var labertext = Convert.ToString(ds.Tables["orderdb"].Rows[0]["Total"]);
-                    LblTotalPrice.Content = $"총 합계 금액 : {labertext}";
+                    var labeltext = Convert.ToString(ds.Tables["orderdb"].Rows[0]["Total"]);
+                    LblTotalPrice.Content = $"총 합계 금액 : {labeltext}";
 
                 }
-
-                
             }
             catch (System.Exception ex)
             {
