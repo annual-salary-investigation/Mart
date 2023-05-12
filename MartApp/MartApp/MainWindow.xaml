@@ -16,6 +16,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
+        <Label Grid.Row="0" x:Name="LblLogin" Content="" Margin="10" FontSize="14" FontFamily="NanumGothic"/>
         <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
                 Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
 

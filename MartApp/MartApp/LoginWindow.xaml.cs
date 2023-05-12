@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace MartApp
 {
@@ -82,12 +83,12 @@ namespace MartApp
                         // 로그인 할때 아무것도 넣지 않으면 안되게 처리해 놨기 때문에 필요 없음
                         //strtxtId = !string.IsNullOrEmpty(reader["Id"]?.ToString()) ? reader["Id"].ToString() : "-";
                         //strtxtPassword = !string.IsNullOrEmpty(reader["Password"]?.ToString()) ? reader["Password"].ToString() : "-";
-                        
+
                         Commons.isManager = true;
                         await this.ShowMessageAsync("로그인 성공!", "상품을 담아주세요", MessageDialogStyle.Affirmative, null);
                         Commons.Islogin = true;
                         this.Close();
-                    }
+                                                                    }
                     else
                     {
                         txtId.Focus();

@@ -72,6 +72,7 @@ namespace MartApp
             if (Commons.Islogin )
             {
                 BtnSelFruit_Click(sender, e);
+                LblLogin.Content = $"{Commons.Id}님 환영합니다!";
             }
             else
             {

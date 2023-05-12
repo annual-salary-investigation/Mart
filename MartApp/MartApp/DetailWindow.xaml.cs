@@ -23,8 +23,8 @@ namespace MartApp
     public partial class DetailWindow : MetroWindow
     {
         private int productId; // 부모창에서 넘어온 ProductID(DB 키값)
-
-        private int currCount = 0;  // 현재 수량 확인 변수
+        int currCount = 1;
+        int price_product = 0;
 
         DataSet ds = new DataSet(); // martDB 데이터
         
@@ -40,16 +40,37 @@ namespace MartApp
             this.productId = productId;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var insRes = 0;
+            this.MettroWindow_Question(sender, new System.ComponentModel.CancelEventArgs());
+        }
 
-                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+        private async void MettroWindow_Question(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+
+            var mySettings = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "확인",
+                NegativeButtonText = "취소",
+                FirstAuxiliaryButtonText = "장바구니 확인",
+                DefaultButtonFocus = MessageDialogResult.Affirmative,
+                AnimateShow = true,
+                AnimateHide = true,
+            };
+
+            var result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
+
+            if (result == MessageDialogResult.Affirmative)
+            {
+                try
                 {
-                    if (conn.State == ConnectionState.Closed) { conn.Open(); }
-                    string insQuery = @"INSERT INTO orderdb
+                    var insRes = 0;
+
+                    using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                    {
+                        if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                        string insQuery = @"INSERT INTO orderdb
                                                    ( ProductId,
                                                      Id,
                                                      Product,
@@ -67,57 +88,84 @@ namespace MartApp
                                                      @Category,
                                                      @Image,
                                                      @DateTime )";
-                    
-                    MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                    var adapter = new MySqlDataAdapter(cmd);
-                    
-                    cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
-                    cmd.Parameters.AddWithValue("@Id", Commons.Id);
-                    cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
-                    cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
-                    cmd.Parameters.AddWithValue("@Count", lblCount.Content);
-                    cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
-                    cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
-                    cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                    insRes += cmd.ExecuteNonQuery();
+
+                        MySqlCommand cmd = new MySqlCommand(insQuery, conn);
+                        var adapter = new MySqlDataAdapter(cmd);
+
+                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                        cmd.Parameters.AddWithValue("@Id", Commons.Id);
+                        cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
+                        cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
+                        cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                        cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
+                        cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
+                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                        insRes += cmd.ExecuteNonQuery();
+                    }
+                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
+                }
+                catch (Exception ex)
+                {
+                    await this.ShowMessageAsync("오류", $"DB연결오류 {ex.Message}", MessageDialogStyle.Affirmative, null);
                 }
 
-                //this.MettroWindow_Question
-                MessageBox.Show("DB저장성공", "저장");
             }
-            catch (Exception ex)
-            {
-                await this.ShowMessageAsync("오류", $"DB연결오류 {ex.Message}", MessageDialogStyle.Affirmative, null);
-            }
-
-            var cartpage = new CartWindow();            // CartWindow 장바구니창
-            cartpage.Owner = this;
-            cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            cartpage.ShowDialog();
-        }
-
-        private async void MettroWindow_Question(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-
-            var mySettings = new MetroDialogSettings
-            {
-                AffirmativeButtonText = "확인",
-                NegativeButtonText = "취소",
-                AnimateShow = true,
-                AnimateHide = true,
-            };
-
-            var result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?",
-                                                     MessageDialogStyle.AffirmativeAndNegative, mySettings);
-
-            if (result == MessageDialogResult.Negative)
+            else if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = true;
             }
-            else if (result == MessageDialogResult.Affirmative)
+            else if(result == MessageDialogResult.FirstAuxiliary)
             {
-                return;
+                try
+                {
+                    var insRes = 0;
+
+                    using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                    {
+                        if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                        string insQuery = @"INSERT INTO orderdb
+                                                   ( ProductId,
+                                                     Id,
+                                                     Product,
+                                                     Price,
+                                                     Count,
+                                                     Category,
+                                                     Image,
+                                                     DateTime)
+                                                     VALUES
+                                                   ( @ProductId,
+                                                     @Id,
+                                                     @Product,
+                                                     @Price,
+                                                     @Count,
+                                                     @Category,
+                                                     @Image,
+                                                     @DateTime )";
+
+                        MySqlCommand cmd = new MySqlCommand(insQuery, conn);
+                        var adapter = new MySqlDataAdapter(cmd);
+
+                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                        cmd.Parameters.AddWithValue("@Id", Commons.Id);
+                        cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
+                        cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
+                        cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                        cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
+                        cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
+                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                        insRes += cmd.ExecuteNonQuery();
+                    }
+                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
+                }
+                catch (Exception ex)
+                {
+                    await this.ShowMessageAsync("오류", $"DB연결오류 {ex.Message}", MessageDialogStyle.Affirmative, null);
+                }
+               
+                this.Close();
+                var cartpage = new CartWindow();            // CartWindow 장바구니창
+                cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                cartpage.ShowDialog();
             }
         }
 
@@ -131,6 +179,8 @@ namespace MartApp
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            currCount = 1;
+            lblCount.Content = currCount;  // 현재 수량 확인 변수
             List<MartItem> list = new List<MartItem>();
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
@@ -171,6 +221,7 @@ namespace MartApp
                         }
                         LblProductName.Content = productName;
                         LblPrice.Content = productPrice;
+                        price_product = Convert.ToInt32(productPrice);
                     }
 
                     var insquery = @"SELECT ProductId
@@ -182,9 +233,6 @@ namespace MartApp
                                           , Image
                                           , DateTime
                                        FROM orderdb;";
-
-
-
                 }
             }
         }
@@ -195,6 +243,9 @@ namespace MartApp
             {
                 currCount++;
                 lblCount.Content = currCount.ToString();
+
+                int price = Convert.ToInt32(currCount) * price_product;
+                LblPrice.Content = price;
             }
             else
             {
@@ -208,6 +259,9 @@ namespace MartApp
             {
                 currCount--;
                 lblCount.Content = currCount.ToString();
+
+                int price = Convert.ToInt32(currCount) * price_product;
+                LblPrice.Content = price;
             }
             else
             {
