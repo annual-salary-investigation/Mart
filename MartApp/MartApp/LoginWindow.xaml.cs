@@ -85,7 +85,7 @@ namespace MartApp
                         //strtxtPassword = !string.IsNullOrEmpty(reader["Password"]?.ToString()) ? reader["Password"].ToString() : "-";
 
                         Commons.isManager = true;
-                        await this.ShowMessageAsync("로그인 성공!", "상품을 담아주세요", MessageDialogStyle.Affirmative, null);
+                        await this.ShowMessageAsync("로그인 성공!", "로그인 되었습니다.", MessageDialogStyle.Affirmative, null);
                         Commons.Islogin = true;
                         this.Close();
                                                                     }

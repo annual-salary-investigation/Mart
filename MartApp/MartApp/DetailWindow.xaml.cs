@@ -53,14 +53,24 @@ namespace MartApp
             {
                 AffirmativeButtonText = "확인",
                 NegativeButtonText = "취소",
-                FirstAuxiliaryButtonText = "장바구니 확인",
                 DefaultButtonFocus = MessageDialogResult.Affirmative,
                 AnimateShow = true,
                 AnimateHide = true,
             };
 
-            var result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
+            var mySettings_two = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "쇼핑 계속하기",
+                NegativeButtonText = "장바구니 확인",
+                DefaultButtonFocus = MessageDialogResult.Affirmative,
+                AnimateShow = true,
+                AnimateHide = true,
+            };
 
+            var result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+
+            // Update문을 사용해서 if 문써서 같은 상품이 들어오면 Update되게 Productid 값으로 날짜도 바뀌게
             if (result == MessageDialogResult.Affirmative)
             {
                 try
@@ -103,6 +113,21 @@ namespace MartApp
                         insRes += cmd.ExecuteNonQuery();
                     }
                     await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
+                    result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
+                    
+                    // 쇼핑게속하기 / 장바구니 확인
+                    if(result == MessageDialogResult.Affirmative)
+                    {
+                        this.Close();
+                    }
+                    else if(result == MessageDialogResult.Negative)
+                    {
+                        this.Close();
+                        var cartpage = new CartWindow();            // CartWindow 장바구니창
+                        cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        cartpage.ShowDialog();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -113,59 +138,6 @@ namespace MartApp
             else if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = true;
-            }
-            else if(result == MessageDialogResult.FirstAuxiliary)
-            {
-                try
-                {
-                    var insRes = 0;
-
-                    using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
-                    {
-                        if (conn.State == ConnectionState.Closed) { conn.Open(); }
-                        string insQuery = @"INSERT INTO orderdb
-                                                   ( ProductId,
-                                                     Id,
-                                                     Product,
-                                                     Price,
-                                                     Count,
-                                                     Category,
-                                                     Image,
-                                                     DateTime)
-                                                     VALUES
-                                                   ( @ProductId,
-                                                     @Id,
-                                                     @Product,
-                                                     @Price,
-                                                     @Count,
-                                                     @Category,
-                                                     @Image,
-                                                     @DateTime )";
-
-                        MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                        var adapter = new MySqlDataAdapter(cmd);
-
-                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
-                        cmd.Parameters.AddWithValue("@Id", Commons.Id);
-                        cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
-                        cmd.Parameters.AddWithValue("@Price", ds.Tables["martdb"].Rows[0]["Price"]);
-                        cmd.Parameters.AddWithValue("@Count", lblCount.Content);
-                        cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
-                        cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
-                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                        insRes += cmd.ExecuteNonQuery();
-                    }
-                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
-                }
-                catch (Exception ex)
-                {
-                    await this.ShowMessageAsync("오류", $"DB연결오류 {ex.Message}", MessageDialogStyle.Affirmative, null);
-                }
-               
-                this.Close();
-                var cartpage = new CartWindow();            // CartWindow 장바구니창
-                cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                cartpage.ShowDialog();
             }
         }
 
