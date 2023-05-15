@@ -9,8 +9,17 @@
         mc:Ignorable="d"
         Title="AdminLogin" Height="360" Width="500">
     <Grid>
-        <StackPanel>
-            <Label Content="관리자 로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label Content="로그인" FontSize="22" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
+
+        </Grid>
+
+        <StackPanel Grid.Row="1">
             <Label Content="아이디" Width="204" />
             <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="admin"/>
             <Label Content="비밀번호" Width="204"/>
@@ -19,9 +28,9 @@
                 <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" 
                         Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
                 <Button x:Name="btnCancel" Click="btnCancel_Click" Content="취소" FontSize="15" 
-                        Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs}"/>
-
+                        Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </mah:MetroWindow>
