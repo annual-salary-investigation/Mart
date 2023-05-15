@@ -172,7 +172,8 @@ namespace MartApp
             return false;
         }
 
-        private void txtPassword_TextChanged(object sender, DependencyPropertyChangedEventArgs e)
+
+        private void txtPasswordCheck_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (txtPassword.Password == string.Empty)
             {

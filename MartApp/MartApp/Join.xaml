@@ -31,15 +31,14 @@
             <PasswordBox FontSize="18" Width="200" 
                          x:Name="txtPassword"
                      mah:TextBoxHelper.Watermark="비밀번호를 입력하시오" 
-                     mah:TextBoxHelper.UseFloatingWatermark="True"
-                     DataContextChanged="txtPassword_TextChanged"/>
+                     mah:TextBoxHelper.UseFloatingWatermark="True"/>
             
             <Label Content="비밀번호 확인" Width="204" />
             <PasswordBox x:Name="txtPasswordCheck" FontSize="18" Width="200"                      
                      mah:TextBoxHelper.Watermark="비밀번호를 확인하시오" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     DataContextChanged="txtPassword_TextChanged"/>
-            <TextBlock x:Name="PWNotice" FontSize="12" TextWrapping="Wrap"
+                     PasswordChanged="txtPasswordCheck_PasswordChanged"/>
+            <TextBlock x:Name="PWNotice" FontSize="12" TextWrapping="Wrap" Text="비밀번호 확인"
                        HorizontalAlignment="Center"/>
 
             <Label Content="전화번호" Width="204" />

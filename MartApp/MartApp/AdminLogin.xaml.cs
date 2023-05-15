@@ -3,19 +3,28 @@ using MahApps.Metro.Controls.Dialogs;
 using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace MartApp
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// AdminLogin.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginWindow : MetroWindow
+    public partial class AdminLogin : MetroWindow
     {
-        public LoginWindow()
+        public AdminLogin()
         {
             InitializeComponent();
         }
@@ -88,7 +97,7 @@ namespace MartApp
                         await this.ShowMessageAsync("로그인 성공!", "상품을 담아주세요", MessageDialogStyle.Affirmative, null);
                         Commons.Islogin = true;
                         this.Close();
-                                                                    }
+                    }
                     else
                     {
                         txtId.Focus();
@@ -140,12 +149,11 @@ namespace MartApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var adminLogin = new AdminLogin();
-            adminLogin.Owner = this;
-            adminLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            adminLogin.ShowDialog();
+            var admin = new Admin();
+            admin.Owner = this;
+            admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            admin.ShowDialog();
         }
     }
+
 }
-
-
