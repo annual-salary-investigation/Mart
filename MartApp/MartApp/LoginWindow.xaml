@@ -10,9 +10,17 @@
         mc:Ignorable="d"
         Title="TT Mart" Height="360" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
     <Grid>
-        <StackPanel>
-            <Button Content="관리자" Margin="5" Width="65" HorizontalAlignment="Left" Click="Button_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
-            <Label Content="로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Button Content="관리자" Margin="5" Width="50" Height ="30" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"/>
+            <Label Content="로그인" FontSize="22" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
             <Label Content="아이디" Width="204" />
             <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
             <Label Content="비밀번호" Width="204"/>
@@ -23,5 +31,6 @@
 
             </StackPanel>
         </StackPanel>
+
     </Grid>
 </mah:MetroWindow>
