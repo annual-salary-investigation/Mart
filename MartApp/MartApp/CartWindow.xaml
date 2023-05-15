@@ -26,7 +26,16 @@
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding ProductId}" Header="번호" FontWeight="Bold"/>-->
                 <!--<DataGridTextColumn Binding="{Binding Image}" Header="제품 사진" FontWeight="Bold"/>-->
-                <DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="이미지">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
@@ -44,7 +53,7 @@
         </DataGrid>
 
         <Grid Grid.Row="2">
-            <Label x:Name="LblTotalPrice" Content="테스트" 
+            <Label x:Name="LblTotalPrice" Content="총 합계 금액 : 0" 
                    HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
         </Grid>
 

@@ -149,10 +149,19 @@ namespace MartApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var admin = new Admin();
-            admin.Owner = this;
-            admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            admin.ShowDialog();
+            //if (txtPassword.Password == 1234)
+            //{
+            //    var admin = new Admin();
+            //    admin.Owner = this;
+            //    admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            //    admin.ShowDialog();
+            //}
+            
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 

@@ -157,5 +157,14 @@ namespace mart
 
         }
 
+        private void check_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void check_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace MartApp.Models
 {
     public class OrderItem
     {
+        public bool IsSelected { get; set; } // 체크박스
         public int ProductId { get; set; } // mart테이블 외래키, 자동증가
         public string Id { get; set; } // user테이블 외래키
         public string Product { get; set; }
