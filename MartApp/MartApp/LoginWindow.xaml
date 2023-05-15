@@ -8,10 +8,10 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="TT Mart" Height="320" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
+        Title="TT Mart" Height="360" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
     <Grid>
         <StackPanel>
-            <Button Content="Button" Margin="5" Width="65" HorizontalAlignment="Left" Click="Button_Click"/>
+            <Button Content="관리자" Margin="5" Width="65" HorizontalAlignment="Left" Click="Button_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
             <Label Content="로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" />
             <Label Content="아이디" Width="204" />
             <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>

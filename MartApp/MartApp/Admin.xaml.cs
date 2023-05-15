@@ -1,17 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MartApp
 {
@@ -25,9 +14,14 @@ namespace MartApp
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnOrderList_Click(object sender, RoutedEventArgs e)
         {
+            adminPage.Source = new Uri("OrderList.xaml", UriKind.Relative);
+        }
 
+        private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            adminPage.Source = new Uri("UserInfo.xaml", UriKind.Relative);
         }
     }
 }

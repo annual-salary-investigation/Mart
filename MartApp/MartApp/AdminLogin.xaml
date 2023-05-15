@@ -7,7 +7,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="AdminLogin" Height="450" Width="800">
+        Title="AdminLogin" Height="360" Width="500">
     <Grid>
         <StackPanel>
             <Label Content="관리자 로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" />

@@ -145,6 +145,8 @@ namespace MartApp
             adminLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             adminLogin.ShowDialog();
         }
+
+     
     }
 }
 

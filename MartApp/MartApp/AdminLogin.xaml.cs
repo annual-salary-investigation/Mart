@@ -67,7 +67,7 @@ namespace MartApp
                     // 실행할 쿼리문
                     string query = @"SELECT Id
                                           , PassWord
-                                       FROM userdb
+                                       FROM admindb
                                       WHERE Id = @Id
                                         AND Password = @Password;";
 
@@ -94,8 +94,13 @@ namespace MartApp
                         //strtxtPassword = !string.IsNullOrEmpty(reader["Password"]?.ToString()) ? reader["Password"].ToString() : "-";
 
                         Commons.isManager = true;
-                        await this.ShowMessageAsync("로그인 성공!", "상품을 담아주세요", MessageDialogStyle.Affirmative, null);
-                        Commons.Islogin = true;
+                        await this.ShowMessageAsync("로그인 성공!", "관리자 로그인 성공", MessageDialogStyle.Affirmative, null);
+                        
+                        var admin = new Admin();
+                        admin.Owner = this;
+                        admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        admin.ShowDialog();
+                        
                         this.Close();
                     }
                     else
