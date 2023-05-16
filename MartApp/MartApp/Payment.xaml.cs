@@ -7,6 +7,7 @@ using System;
 using System.Windows;
 using MartApp.Models;
 using mart;
+using System.Runtime.InteropServices;
 
 namespace MartApp
 {
@@ -110,6 +111,7 @@ namespace MartApp
             {
                 await this.ShowMessageAsync("오류", $"DB오류 {ex.Message}");
             }
+
         }
     }
 }

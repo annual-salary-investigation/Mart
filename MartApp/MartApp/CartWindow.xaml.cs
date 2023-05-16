@@ -7,12 +7,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Web.UI.WebControls;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Media.Imaging;
 
 namespace mart
 {
@@ -85,6 +80,8 @@ namespace mart
             Payment.Owner = this;
             Payment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             Payment.ShowDialog();
+
+            CartWindow_Loaded(sender, e);
         }
 
         private async void BtnDel_Click(object sender, RoutedEventArgs e)
@@ -185,19 +182,12 @@ namespace mart
 
                     var labeltext = Convert.ToString(ds.Tables["orderdb"].Rows[0]["Total"]);
                     LblTotalPrice.Content = $"총 합계 금액 : {labeltext}";
-
-                    
                 }
             }
             catch (System.Exception ex)
             {
                 await this.ShowMessageAsync("오류", $"장바구니 보기 오류 : {ex.Message}");
             }
-        }
-
-        public void close()
-        {
-            this.close();
         }
     }
 }
