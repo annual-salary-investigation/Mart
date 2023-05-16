@@ -40,13 +40,13 @@ namespace mart
 
         }
 
-        private async void BtnPayment_Click(object sender, RoutedEventArgs e)
+        private void BtnPayment_Click(object sender, RoutedEventArgs e)
         {
             // orderdb Checked 업데이트
 
             if (GrdCart.SelectedItems.Count == 0)
             {
-                await Commons.ShowMessageAsync("오류", "결제할 상품을 선택하세요.");
+                this.ShowMessageAsync("오류", "결제할 상품을 선택하세요.");
                 return;
             }
 
@@ -78,7 +78,7 @@ namespace mart
             }
             catch (Exception ex)
             {
-                await Commons.ShowMessageAsync("오류", $"결제 오류 {ex.Message}");
+                this.ShowMessageAsync("오류", $"결제 오류 {ex.Message}");
             }
 
             var Payment = new payment();
@@ -87,7 +87,45 @@ namespace mart
             Payment.ShowDialog();
         }
 
-        private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (GrdCart.SelectedItems.Count == 0)
+            {
+                await Commons.ShowMessageAsync("오류", "삭제할 상품을 선택하시오.");
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                {
+                    conn.Open();
+
+                    var query = @"DELETE FROM orderdb WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
+
+
+                    foreach (OrderItem item in GrdCart.SelectedItems)
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@ProductId", item.ProductId);
+                        cmd.Parameters.AddWithValue("@Id", item.Id);
+                        cmd.Parameters.AddWithValue("@DateTime", item.DateTime);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    await this.ShowMessageAsync("장바구니", "장바구니 삭제 완료");
+                    CartWindow_Loaded(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                await Commons.ShowMessageAsync("오류", $"DB삭제 오류 {ex.Message}");
+            }
+        }
+
+        public async void CartWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = null;
             List<OrderItem> list = new List<OrderItem>();
@@ -153,45 +191,6 @@ namespace mart
             catch (System.Exception ex)
             {
                 await this.ShowMessageAsync("오류", $"장바구니 보기 오류 : {ex.Message}");
-            }
-
-        }
-
-        private async void BtnDel_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (GrdCart.SelectedItems.Count == 0)
-            {
-                await Commons.ShowMessageAsync("오류", "삭재할 상품을 선택하시오.");
-                return;
-            }
-
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
-                {
-                    conn.Open();
-
-                    var query = @"DELETE FROM orderdb WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
-
-
-                    foreach (OrderItem item in GrdCart.SelectedItems)
-                    {
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@ProductId", item.ProductId);
-                        cmd.Parameters.AddWithValue("@Id", item.Id);
-                        cmd.Parameters.AddWithValue("@DateTime", item.DateTime);
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    await this.ShowMessageAsync("장바구니", "장바구니 삭제 완료");
-                    MetroWindow_Loaded(sender, e);
-                }
-            }
-            catch (Exception ex)
-            {
-                await Commons.ShowMessageAsync("오류", $"DB삭제 오류 {ex.Message}");
             }
         }
     }

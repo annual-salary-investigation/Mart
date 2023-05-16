@@ -6,6 +6,7 @@ using System.Data;
 using System;
 using System.Windows;
 using MartApp.Models;
+using mart;
 
 namespace MartApp
 {
@@ -99,11 +100,19 @@ namespace MartApp
                     
                 }
                 await this.ShowMessageAsync("결제 완료", "10분 후 픽업가능합니다.");
+
+                CartWindow cc = new CartWindow();
+                cc.CartWindow_Loaded(sender, e);
+
+
             }
+           
             catch(Exception ex) 
             {
                 await this.ShowMessageAsync("오류", $"DB오류 {ex.Message}");
             }
+            
+
         }
     }
 }
