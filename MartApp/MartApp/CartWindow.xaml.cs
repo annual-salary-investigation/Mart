@@ -186,12 +186,18 @@ namespace mart
                     var labeltext = Convert.ToString(ds.Tables["orderdb"].Rows[0]["Total"]);
                     LblTotalPrice.Content = $"총 합계 금액 : {labeltext}";
 
+                    
                 }
             }
             catch (System.Exception ex)
             {
                 await this.ShowMessageAsync("오류", $"장바구니 보기 오류 : {ex.Message}");
             }
+        }
+
+        public void close()
+        {
+            this.close();
         }
     }
 }
