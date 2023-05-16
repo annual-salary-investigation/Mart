@@ -57,29 +57,28 @@ namespace MartApp
 
                     // PaymentDB에 insert
                     var insRes = 0;
-                    string insQuery = @"INSERT INTO paymentdb
-                                                  ( ProductId,
-                                                    Id,
-                                                    Product,
-                                                    Price,
-                                                    Count,
-                                                    Category,
-                                                    Image,
-                                                    DateTime )
-                                             VALUES
-                                                  ( @ProductId,
-                                                    @Id,
-                                                    @Product,
-                                                    @Price,
-                                                    @Count,
-                                                    @Category,
-                                                    @Image,
-                                                    @DateTime )";
+                    query = @"INSERT INTO paymentdb
+                                        ( ProductId,
+                                          Id,
+                                          Product,
+                                          Price,
+                                          Count,
+                                          Category,
+                                          Image,
+                                          DateTime )
+                                   VALUES
+                                        ( @ProductId,
+                                          @Id,
+                                          @Product,
+                                          @Price,
+                                          @Count,
+                                          @Category,
+                                          @Image,
+                                          @DateTime )";
                     
                     foreach (DataRow row in ds.Tables["orderdb"].Rows)
                     {
-                        cmd = new MySqlCommand(insQuery, conn);
-                        adapter = new MySqlDataAdapter(cmd);
+                        cmd = new MySqlCommand(query, conn);
 
                         cmd.Parameters.AddWithValue("@ProductId", row["ProductId"]);
                         cmd.Parameters.AddWithValue("@Id", row["Id"]);
@@ -94,6 +93,10 @@ namespace MartApp
                     }
 
                     // 장바구니에서 삭제
+                    query = @"DELETE FROM orderdb WHERE Checked=1;";
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    
                 }
                 await this.ShowMessageAsync("결제 완료", "10분 후 픽업가능합니다.");
             }
