@@ -60,7 +60,7 @@ namespace MartApp
                                 DateTime = Convert.ToDateTime(row["DateTime"]),
                             });
                         }
-                        // this.DataContext = list;
+                        this.DataContext = list;
                         GrdUserInfo.ItemsSource = list; // 이미지 띄움
                     }
                 }

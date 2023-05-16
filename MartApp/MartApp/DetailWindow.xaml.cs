@@ -80,7 +80,16 @@ namespace MartApp
                     using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                     {
                         if (conn.State == ConnectionState.Closed) { conn.Open(); }
-                        string insQuery = @"INSERT INTO orderdb
+                        string chkQuery = @"SELECT ProductId FROM orderdb 
+                                             WHERE ProductId = @ProductId AND Id = @Id";
+                        MySqlCommand cmd = new MySqlCommand(chkQuery, conn);
+                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                        cmd.Parameters.AddWithValue("@Id", Commons.Id);
+
+                        var count = Convert.ToInt32( cmd.ExecuteScalar());
+                        if (count == 0)
+                        {
+                            string insQuery = @"INSERT INTO orderdb
                                                    ( ProductId,
                                                      Id,
                                                      Product,
@@ -99,18 +108,34 @@ namespace MartApp
                                                      @Image,
                                                      @DateTime )";
 
-                        MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                        var adapter = new MySqlDataAdapter(cmd);
+                            cmd = new MySqlCommand(insQuery, conn);
+                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                            cmd.Parameters.AddWithValue("@Id", Commons.Id);
+                            cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
+                            cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
+                            cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                            cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
+                            cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
+                            cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                            insRes += cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string upQuery = @"UPDATE orderdb
+                                                  SET Count = Count + @Count,
+                                                      Price = Price + @Price,
+                                                      DateTime = @DateTime
+                                                WHERE ProductId = @ProductId";
+                            cmd = new MySqlCommand(upQuery, conn);
 
-                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
-                        cmd.Parameters.AddWithValue("@Id", Commons.Id);
-                        cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
-                        cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
-                        cmd.Parameters.AddWithValue("@Count", lblCount.Content);
-                        cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
-                        cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
-                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                        insRes += cmd.ExecuteNonQuery();
+                            int total_price = Convert.ToInt32(currCount) * price_product;
+
+                            cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                            cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
+                            cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                            insRes += cmd.ExecuteNonQuery();
+                        }
                     }
                     await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
                     result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings_two);

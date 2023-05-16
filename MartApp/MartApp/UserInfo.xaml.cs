@@ -51,6 +51,7 @@ namespace MartApp
                             PhoneNum = Convert.ToString(row["PhoneNum"]),
                         });
                     }
+                    this.DataContext = list;
                 }
             }
             catch (System.Exception ex)
