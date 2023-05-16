@@ -32,20 +32,21 @@ namespace MartApp
                     {
                         if (conn.State == ConnectionState.Closed) { conn.Open(); }
 
-                        var query = $@"SELECT   Id,
-                                                Product,
-                                                Price,
-                                                Count,
-                                                Category,
-                                                Image,
-                                                DateTime
-                                            FROM orderdb;";
+                        var query = @"SELECT ProductId,
+                                             Id,
+                                             Product,
+                                             Price,
+                                             Count,
+                                             Category,
+                                             Image,
+                                             DateTime
+                                        FROM paymentdb;";
                         var cmd = new MySqlCommand(query, conn);
                         var adapter = new MySqlDataAdapter(cmd);
                         DataSet ds = new DataSet();
-                        adapter.Fill(ds, "orderdb");
+                        adapter.Fill(ds, "paymentdb");
 
-                        foreach (DataRow row in ds.Tables["orderdb"].Rows)
+                        foreach (DataRow row in ds.Tables["paymentdb"].Rows)
                         {
                             //var TimeDate = DateTime.
                             list.Add(new OrderItem
@@ -68,7 +69,6 @@ namespace MartApp
                     Debug.WriteLine(ex.Message);
                     Debug.WriteLine("오류남 오류남");
                 }
-
             }
         }
     }

@@ -27,7 +27,7 @@
                 <!--<DataGridTextColumn Binding="{Binding ProductId}" Header="번호" FontWeight="Bold"/>-->
                 <!--<DataGridTextColumn Binding="{Binding Image}" Header="제품 사진" FontWeight="Bold"/>-->
 
-                <DataGridTemplateColumn Header="Select">
+                <DataGridTemplateColumn Header="선택">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />

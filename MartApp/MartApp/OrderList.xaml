@@ -18,7 +18,13 @@
                 <DataGridTextColumn Binding="{Binding Price}" Header="가격" />
                 <DataGridTextColumn Binding="{Binding Count}" Header="수량" />
                 <DataGridTextColumn Binding="{Binding Category}" Header="카테고리" />
-                <DataGridTextColumn Binding="{Binding Image}" Header="이미지" />
+                <DataGridTemplateColumn Header="이미지">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{0:yyyy/MM/dd}}" Header="주문일자" />
             </DataGrid.Columns>
         </DataGrid>

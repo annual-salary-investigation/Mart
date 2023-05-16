@@ -40,8 +40,47 @@ namespace mart
 
         }
 
-        private void BtnPayment_Click(object sender, RoutedEventArgs e)
+        private async void BtnPayment_Click(object sender, RoutedEventArgs e)
         {
+            // orderdb Checked 업데이트
+
+            if (GrdCart.SelectedItems.Count == 0)
+            {
+                await Commons.ShowMessageAsync("오류", "결제할 상품을 선택하세요.");
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
+                {
+                    conn.Open();
+                    // Checked 기본값을 한번 초기화
+                    var query = @"UPDATE orderdb SET Checked = NULL";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // 선택된 셀의 Checked 값을 업데이트
+                    query = @"UPDATE orderdb
+                                     SET Checked = 1
+                                  WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
+
+                    foreach (OrderItem item in GrdCart.SelectedItems)
+                    {
+                        cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@ProductId", item.ProductId);
+                        cmd.Parameters.AddWithValue("@Id", item.Id);
+                        cmd.Parameters.AddWithValue("@DateTime", item.DateTime);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await Commons.ShowMessageAsync("오류", $"결제 오류 {ex.Message}");
+            }
+
             var Payment = new payment();
             Payment.Owner = this;
             Payment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -154,17 +193,6 @@ namespace mart
             {
                 await Commons.ShowMessageAsync("오류", $"DB삭제 오류 {ex.Message}");
             }
-
-        }
-
-        private void check_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void check_Unchecked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
