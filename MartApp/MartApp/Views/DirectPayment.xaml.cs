@@ -97,10 +97,9 @@ namespace MartApp.Views
             }
         }
 
-
         private void BtnNo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
