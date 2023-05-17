@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Button Content="관리자" Margin="5" Width="50" Height ="30" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button Content="관리자" Margin="5" Width="50" Height ="30" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnAdmin"/>
             <Label Content="로그인" FontSize="22" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
         </Grid>
 

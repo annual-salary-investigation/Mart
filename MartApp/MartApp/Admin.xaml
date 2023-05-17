@@ -13,6 +13,7 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        
         <StackPanel Grid.Column="0">
             <Button Content="회원조회" x:Name="BtnUserInfo" HorizontalAlignment="Center" Width="50" Height="30" Margin="10"
                     Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}" Click="BtnUserInfo_Click" />

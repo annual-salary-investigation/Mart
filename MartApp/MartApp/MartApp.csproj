@@ -250,14 +250,14 @@
     <Compile Include="SnackPage.xaml.cs">
       <DependentUpon>SnackPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SuccessWindow.xaml.cs">
-      <DependentUpon>SuccessWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="VegePage.xaml.cs">
       <DependentUpon>VegePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirectPayment.xaml.cs">
+      <DependentUpon>DirectPayment.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin.xaml">
       <SubType>Designer</SubType>
@@ -323,15 +323,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SuccessWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VegePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DirectPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

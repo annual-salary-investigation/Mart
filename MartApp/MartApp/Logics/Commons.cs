@@ -24,5 +24,11 @@ namespace MartApp.Logics
         {
             return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title, message, style, null);
         }
+
+        public static void CartWindowShow(int productId)
+        {
+            var detailWindow = new DetailWindow(productId);
+            detailWindow.ShowDialog();
+        }
     }
 }

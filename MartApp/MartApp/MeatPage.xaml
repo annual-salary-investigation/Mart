@@ -13,11 +13,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <!--<DataGrid x:Name="GrdResult" Margin="10" 
-                  IsReadOnly="True" ItemsSource="{Binding}"
-                  Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
-        </DataGrid>-->
-
+       
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -25,17 +21,17 @@
             </Grid.RowDefinitions>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn1" Height="100" Width="100"  Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img1" />
+                <Button x:Name="Btn1" Height="100" Width="100"  Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img1"/>
                 </Button>
-                <Button x:Name="Btn2" Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img2" />
+                <Button x:Name="Btn2" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img2"/>
                 </Button>
-                <Button x:Name="Btn3"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img3" />
+                <Button x:Name="Btn3" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img3"/>
                 </Button>
-                <Button x:Name="Btn4"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img4" />
+                <Button x:Name="Btn4" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img4"/>
                 </Button>
             </StackPanel>
 
@@ -52,24 +48,23 @@
         </Grid>
 
         <Grid Grid.Row="1">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2">
-                <Button x:Name="Btn5"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img5" />
+                <Button x:Name="Btn5" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img5"/>
                 </Button>
-                <Button x:Name="Btn6"  Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img6" />
+                <Button x:Name="Btn6" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img6"/>
                 </Button>
-                <Button x:Name="Btn7" Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img7" />
+                <Button x:Name="Btn7" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img7"/>
                 </Button>
-                <Button x:Name="Btn8" Height="100" Width="100" Margin="20" Click="Btn1_Click">
-                    <Image x:Name="Img8" />
+                <Button x:Name="Btn8" Height="100" Width="100" Margin="20" Click="Btn_Click">
+                    <Image x:Name="Img8"/>
                 </Button>
             </StackPanel>
 
@@ -84,6 +79,5 @@
                            FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
             </StackPanel>
         </Grid>
-
     </Grid>
 </Page>

@@ -3,9 +3,9 @@ using MartApp.Models;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace MartApp
 {
@@ -21,20 +21,17 @@ namespace MartApp
 
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.DataContext = null;
             List<User> list = new List<User>();
-
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
                 {
                     if (conn.State == ConnectionState.Closed) { conn.Open(); }
 
-                    var query = $@"SELECT Id
-	                                    , Name
-                                        , PhoneNum
+                    var query = $@"SELECT Id,
+                                          Name,
+                                          PhoneNu
                                      FROM userdb;";
-
 
                     var cmd = new MySqlCommand(query, conn);
                     var adapter = new MySqlDataAdapter(cmd);
@@ -43,7 +40,6 @@ namespace MartApp
 
                     foreach (DataRow row in ds.Tables["userdb"].Rows)
                     {
-                        //var TimeDate = DateTime.
                         list.Add(new User
                         {
                             Id = Convert.ToString(row["Id"]),
@@ -51,15 +47,13 @@ namespace MartApp
                             PhoneNum = Convert.ToString(row["PhoneNum"]),
                         });
                     }
-                    this.DataContext = list;
+                    GrdUserInfo.ItemsSource = list; // 이미지 띄움
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine("오류남 오류남");
+                MessageBox.Show($"장바구니 오류!{ex.Message}", "장바구니");
             }
-
         }
     }
 }

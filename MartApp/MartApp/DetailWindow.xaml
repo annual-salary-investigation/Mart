@@ -36,16 +36,15 @@
                      HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" 
                         Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="10" Content="장바구니" FontSize="25" 
+                <Button x:Name="BtnCart" Margin="10" Content="장바구니" FontSize="25" 
                      HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"
-                    Click="Button_Click"/>
+                    Click="BtnCart_Click"/>
                 <Button Margin="10" Content="구매하기" FontSize="25" 
                      HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BtnBuy"
                     Click="BtnBuy_Click"
                      Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
             </StackPanel>
-            
 
             <Label Grid.Row="1" Grid.Column="1" Margin="10" Content="사과" FontSize="20" x:Name="LblProductName"
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -60,9 +59,9 @@
                 <Button Grid.Row="3" Grid.Column="1" x:Name="btnMinus" Margin="5,10" Click="btnMinus_Click">
                     <iconPacks:JamIcons Kind="Minus"/>
                 </Button>
-                
             </StackPanel>
         </Grid>
+        
         <Grid Grid.Row="0" Grid.Column="0">
             <GroupBox Margin="20, 40, 0, 40" Header="제품이미지" mah:HeaderedControlHelper.HeaderFontFamily="NanumGothic"
                       mah:HeaderedControlHelper.HeaderHorizontalContentAlignment="Center" Height="280" Width="230">

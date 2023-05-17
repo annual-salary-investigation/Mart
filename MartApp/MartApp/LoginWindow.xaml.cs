@@ -138,15 +138,14 @@ namespace MartApp
             join.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnAdmin(object sender, RoutedEventArgs e)
         {
             var adminLogin = new AdminLogin();
             adminLogin.Owner = this;
             adminLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             adminLogin.ShowDialog();
+            this.Close();
         }
-
-     
     }
 }
 

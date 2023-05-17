@@ -17,7 +17,7 @@ namespace MartApp
             InitializeComponent();
         }
 
-        // 과일 페이지
+        // 과일 페이지 이동
         private void BtnSelFruit_Click(object sender, RoutedEventArgs e)
         {
             CategoryPage.Source = new Uri("FruitPage.xaml", UriKind.Relative);
@@ -59,7 +59,7 @@ namespace MartApp
             var cartpage = new CartWindow();
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            cartpage.ShowDialog();
+            cartpage.ShowDialog(); // 장바구니 열림
         }
 
         // MetroWindow 창이 로드 되었을때 로그인 창이 먼저 띄어지게 함

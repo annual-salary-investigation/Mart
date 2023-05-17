@@ -11,7 +11,8 @@
     <Grid>
         <DataGrid x:Name="GrdUserInfo" Margin="5,5,5,5" FontSize="15"
                   IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
-                  ItemsSource="{Binding}" AutoGenerateColumns="False">
+                  ItemsSource="{Binding}" AutoGenerateColumns="False"> <!-- AutoGenerateColumns 열이 자동으로 생성되지 않도록 함-->
+                  
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="이름" />
                 <DataGridTextColumn Binding="{Binding Id}" Header="아이디" />
