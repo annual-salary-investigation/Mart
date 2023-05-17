@@ -182,8 +182,8 @@ namespace MartApp
                             //insRes += cmd.ExecuteNonQuery();
                         }
                     }
-                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!");
-                    result = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
+                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!",  MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
+                    //esult = await this.ShowMessageAsync("장바구니", "장바구니에 추가하시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
                     
                     // 쇼핑게속하기 / 장바구니 확인
                     if(result == MessageDialogResult.Affirmative)
