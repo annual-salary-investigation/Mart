@@ -1,8 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using mart;
 using MartApp.Logics;
-using MartApp.Views;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -10,7 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
     /// detailWindow.xaml에 대한 상호 작용 논리
@@ -192,7 +190,7 @@ namespace MartApp
                     else if(result == MessageDialogResult.Negative)
                     {
                         this.Close();
-                        var cartpage = new CartWindow();            // CartWindow 장바구니창
+                        var cartpage = new Views.CartWindow();            // CartWindow 장바구니창
                         cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                         cartpage.ShowDialog();
                     }
@@ -212,7 +210,7 @@ namespace MartApp
         private void BtnBuy_Click(object sender, RoutedEventArgs e)
         {
             count = Convert.ToInt32(lblCount.Content);
-            var directPayment = new DirectPayment(this.productId, this.count);           // payment 결제창
+            var directPayment = new Views.DirectPayment(this.productId, this.count);           // payment 결제창
             directPayment.Owner = this;
             directPayment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             directPayment.ShowDialog();

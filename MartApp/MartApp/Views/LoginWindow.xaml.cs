@@ -3,28 +3,19 @@ using MahApps.Metro.Controls.Dialogs;
 using MartApp.Logics;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Controls;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
-    /// AdminLogin.xaml에 대한 상호 작용 논리
+    /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class AdminLogin : MetroWindow
+    public partial class LoginWindow : MetroWindow
     {
-        public AdminLogin()
+        public LoginWindow()
         {
             InitializeComponent();
         }
@@ -67,7 +58,7 @@ namespace MartApp
                     // 실행할 쿼리문
                     string query = @"SELECT Id
                                           , PassWord
-                                       FROM admindb
+                                       FROM userdb
                                       WHERE Id = @Id
                                         AND Password = @Password;";
 
@@ -94,15 +85,10 @@ namespace MartApp
                         //strtxtPassword = !string.IsNullOrEmpty(reader["Password"]?.ToString()) ? reader["Password"].ToString() : "-";
 
                         Commons.isManager = true;
-                        await this.ShowMessageAsync("로그인 성공!", "관리자 로그인 성공", MessageDialogStyle.Affirmative, null);
-                        
-                        var admin = new Admin();
-                        admin.Owner = this;
-                        admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                        admin.ShowDialog();
-                        
+                        await this.ShowMessageAsync("로그인 성공!", "로그인 되었습니다.", MessageDialogStyle.Affirmative, null);
+                        Commons.Islogin = true;
                         this.Close();
-                    }
+                                                                    }
                     else
                     {
                         txtId.Focus();
@@ -146,28 +132,21 @@ namespace MartApp
         // 회원가입 창으로 넘어가게 됨
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
-            var join = new Join();
+            var join = new Views.Join();
             join.Owner = this;
             join.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             join.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnAdmin(object sender, RoutedEventArgs e)
         {
-            //if (txtPassword.Password == 1234)
-            //{
-            //    var admin = new Admin();
-            //    admin.Owner = this;
-            //    admin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            //    admin.ShowDialog();
-            //}
-            
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
+            var adminLogin = new Views.AdminLogin();
+            adminLogin.Owner = this;
+            adminLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            adminLogin.ShowDialog();
             this.Close();
         }
     }
-
 }
+
+

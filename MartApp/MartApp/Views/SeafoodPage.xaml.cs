@@ -6,20 +6,21 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
-    /// DrinkPage.xaml에 대한 상호 작용 논리
+    /// SeafoodPage.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class DrinkPage : Page
+    public partial class SeafoodPage : Page
     {
-        public DrinkPage()
+        public SeafoodPage()
         {
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
             {
                 if (conn.State == System.Data.ConnectionState.Closed)
@@ -33,7 +34,7 @@ namespace MartApp
                                          Category,
                                          Image
                                     FROM martdb
-                                    WHERE Category='음료'";
+                                    WHERE Category='수산'";
 
                 var cmd = new MySqlCommand(query, conn);
                 var adapter = new MySqlDataAdapter(cmd);

@@ -1,14 +1,12 @@
 ﻿using MartApp.Logics;
-using MartApp.Models;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
     /// MeatPage.xaml에 대한 상호 작용 논리

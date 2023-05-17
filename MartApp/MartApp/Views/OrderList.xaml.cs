@@ -7,8 +7,9 @@ using System.Data;
 using System;
 using System.Windows.Controls;
 using System.Diagnostics;
+using System.Windows;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
     /// OrderList.xaml에 대한 상호 작용 논리
@@ -66,8 +67,7 @@ namespace MartApp
                 }
                 catch (System.Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
-                    Debug.WriteLine("오류남 오류남");
+                    MessageBox.Show($"장바구니 오류!{ex.Message}", "장바구니");
                 }
             }
         }

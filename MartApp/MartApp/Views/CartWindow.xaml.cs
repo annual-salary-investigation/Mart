@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 
-namespace mart
+namespace MartApp.Views
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리

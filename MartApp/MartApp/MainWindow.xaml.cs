@@ -1,5 +1,4 @@
 ﻿using MahApps.Metro.Controls;
-using mart;
 using MartApp.Logics;
 using System;
 using System.Diagnostics;
@@ -56,7 +55,7 @@ namespace MartApp
         // 장바구니 버튼 클릭 이벤트
         private void BtnCart_Click(object sender, RoutedEventArgs e)
         {
-            var cartpage = new CartWindow();
+            var cartpage = new Views.CartWindow();
             cartpage.Owner = this;
             cartpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             cartpage.ShowDialog(); // 장바구니 열림
@@ -65,7 +64,7 @@ namespace MartApp
         // MetroWindow 창이 로드 되었을때 로그인 창이 먼저 띄어지게 함
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var loginpage = new LoginWindow();
+            var loginpage = new Views.LoginWindow();
             loginpage.Owner = this;
             loginpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             loginpage.ShowDialog();

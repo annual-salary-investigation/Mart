@@ -6,14 +6,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
-    /// VegePage.xaml에 대한 상호 작용 논리
+    /// DrinkPage.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class VegePage : Page
+    public partial class DrinkPage : Page
     {
-        public VegePage()
+        public DrinkPage()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace MartApp
                                          Category,
                                          Image
                                     FROM martdb
-                                    WHERE Category='채소'";
+                                    WHERE Category='음료'";
 
                 var cmd = new MySqlCommand(query, conn);
                 var adapter = new MySqlDataAdapter(cmd);
@@ -63,4 +63,3 @@ namespace MartApp
         }
     }
 }
-

@@ -27,7 +27,7 @@ namespace MartApp.Logics
 
         public static void CartWindowShow(int productId)
         {
-            var detailWindow = new DetailWindow(productId);
+            var detailWindow = new Views.DetailWindow(productId);
             detailWindow.ShowDialog();
         }
     }

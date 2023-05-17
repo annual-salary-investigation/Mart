@@ -6,7 +6,7 @@ using System.Data;
 using System;
 using System.Windows;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
     /// Payment.xaml에 대한 상호 작용 논리

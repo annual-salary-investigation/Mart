@@ -7,7 +7,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows;
 
-namespace MartApp
+namespace MartApp.Views
 {
     /// <summary>
     /// UserInfo.xaml에 대한 상호 작용 논리
@@ -30,7 +30,7 @@ namespace MartApp
 
                     var query = $@"SELECT Id,
                                           Name,
-                                          PhoneNu
+                                          PhoneNum
                                      FROM userdb;";
 
                     var cmd = new MySqlCommand(query, conn);

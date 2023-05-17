@@ -206,88 +206,88 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Admin.xaml.cs">
+    <Compile Include="Views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminLogin.xaml.cs">
+    <Compile Include="Views\AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CartWindow.xaml.cs">
+    <Compile Include="Views\CartWindow.xaml.cs">
       <DependentUpon>CartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DetailWindow.xaml.cs">
+    <Compile Include="Views\DetailWindow.xaml.cs">
       <DependentUpon>DetailWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DrinkPage.xaml.cs">
+    <Compile Include="Views\DrinkPage.xaml.cs">
       <DependentUpon>DrinkPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FruitPage.xaml.cs">
+    <Compile Include="Views\FruitPage.xaml.cs">
       <DependentUpon>FruitPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Join.xaml.cs">
+    <Compile Include="Views\Join.xaml.cs">
       <DependentUpon>Join.xaml</DependentUpon>
     </Compile>
     <Compile Include="Logics\Commons.cs" />
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MeatPage.xaml.cs">
+    <Compile Include="Views\MeatPage.xaml.cs">
       <DependentUpon>MeatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MartItem.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\PaymentItem.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="OrderList.xaml.cs">
+    <Compile Include="Views\OrderList.xaml.cs">
       <DependentUpon>OrderList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Payment.xaml.cs">
+    <Compile Include="Views\Payment.xaml.cs">
       <DependentUpon>Payment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SeafoodPage.xaml.cs">
+    <Compile Include="Views\SeafoodPage.xaml.cs">
       <DependentUpon>SeafoodPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SnackPage.xaml.cs">
+    <Compile Include="Views\SnackPage.xaml.cs">
       <DependentUpon>SnackPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInfo.xaml.cs">
+    <Compile Include="Views\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VegePage.xaml.cs">
+    <Compile Include="Views\VegePage.xaml.cs">
       <DependentUpon>VegePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DirectPayment.xaml.cs">
       <DependentUpon>DirectPayment.xaml</DependentUpon>
     </Compile>
-    <Page Include="Admin.xaml">
+    <Page Include="Views\Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminLogin.xaml">
+    <Page Include="Views\AdminLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CartWindow.xaml">
+    <Page Include="Views\CartWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DetailWindow.xaml">
+    <Page Include="Views\DetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DrinkPage.xaml">
+    <Page Include="Views\DrinkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FruitPage.xaml">
+    <Page Include="Views\FruitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Join.xaml">
+    <Page Include="Views\Join.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,31 +303,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MeatPage.xaml">
+    <Page Include="Views\MeatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OrderList.xaml">
+    <Page Include="Views\OrderList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Payment.xaml">
+    <Page Include="Views\Payment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SeafoodPage.xaml">
+    <Page Include="Views\SeafoodPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SnackPage.xaml">
+    <Page Include="Views\SnackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInfo.xaml">
+    <Page Include="Views\UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VegePage.xaml">
+    <Page Include="Views\VegePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
