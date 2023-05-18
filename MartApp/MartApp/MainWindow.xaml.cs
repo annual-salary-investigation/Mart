@@ -19,37 +19,37 @@ namespace MartApp
         // 과일 페이지 이동
         private void BtnSelFruit_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("FruitPage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/FruitPage.xaml", UriKind.Relative);
         }
 
         // 채소 페이지 이동
         private void BtnSelVege_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("VegePage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/VegePage.xaml", UriKind.Relative);
         }
         
         // 육류 페이지 이동
         private void BtnSelMeat_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("MeatPage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/MeatPage.xaml", UriKind.Relative);
         }
 
         // 수산 페이지 이동
         private void BtnSelSeafood_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("SeafoodPage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/SeafoodPage.xaml", UriKind.Relative);
         }
 
         // 스낵 페이지 이동
         private void BtnSelSnack_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("SnackPage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/SnackPage.xaml", UriKind.Relative);
         }
 
         // 음료 페이지 이동
         private void BtnSelDrink_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage.Source = new Uri("DrinkPage.xaml", UriKind.Relative);
+            CategoryPage.Source = new Uri("Views/DrinkPage.xaml", UriKind.Relative);
         }
 
         // 장바구니 버튼 클릭 이벤트
