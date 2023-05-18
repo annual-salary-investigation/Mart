@@ -13,43 +13,42 @@
             <Label Content="회원가입" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="15" />
 
             <Label Content="아이디" Width="204" />
-            <TextBox x:Name="txtId" FontSize="18" Width="200" Style="{StaticResource MahApps.Styles.TextBox}" 
+            <TextBox x:Name="TxtId" FontSize="18" Width="200" Style="{StaticResource MahApps.Styles.TextBox}" 
                      mah:TextBoxHelper.Watermark="아이디를 입력하세요" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     TextChanged="txtId_TextChanged"/>
+                     TextChanged="TxtId_TextChanged"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="checkId" Content="아이디 확인" HorizontalAlignment="Center" Click="checkId_Click"/>
-                <TextBlock x:Name="IdNotice" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="BtnCheckId" Content="아이디 확인" HorizontalAlignment="Center" Click="BtnCheckId_Click"/>
+                <TextBlock x:Name="TxtIdNotice" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
 
             <Label Content="이름" Width="204" />
-            <TextBox x:Name="txtName" FontSize="18" Width="200"
+            <TextBox x:Name="TxtName" FontSize="18" Width="200"
                     mah:TextBoxHelper.Watermark="이름을 입력하세요" 
                     mah:TextBoxHelper.UseFloatingWatermark="True"/>
             
             <Label Content="비밀번호" Width="204"/>
             <PasswordBox FontSize="18" Width="200" 
-                         x:Name="txtPassword"
+                         x:Name="TxtPassword"
                      mah:TextBoxHelper.Watermark="비밀번호를 입력하시오" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"/>
             
             <Label Content="비밀번호 확인" Width="204" />
-            <PasswordBox x:Name="txtPasswordCheck" FontSize="18" Width="200"                      
+            <PasswordBox x:Name="TxtPasswordCheck" FontSize="18" Width="200"                      
                      mah:TextBoxHelper.Watermark="비밀번호를 확인하시오" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     PasswordChanged="txtPasswordCheck_PasswordChanged"/>
-            <TextBlock x:Name="PWNotice" FontSize="12" TextWrapping="Wrap" Text="비밀번호 확인"
+                     PasswordChanged="TxtPasswordCheck_PasswordChanged"/>
+            <TextBlock x:Name="TxtPwNotice" FontSize="12" TextWrapping="Wrap" Text="비밀번호 확인"
                        HorizontalAlignment="Center"/>
 
             <Label Content="전화번호" Width="204" />
-            <TextBox x:Name="txtPhoneNum" FontSize="18" Width="200"                   
+            <TextBox x:Name="TxtPhoneNum" FontSize="18" Width="200"                   
                      mah:TextBoxHelper.Watermark="PhoneNumber" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"/>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnOk" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Click="btnOk_Click"></Button>
-                <Button x:Name="btnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnCancel_Click"/>
-
+                <Button x:Name="BtnOk" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Click="BtnOk_Click"></Button>
+                <Button x:Name="BtnCancel" Content="취소" FontSize="15" Margin="30"  Width="100" Height="35" Click="BtnCancel_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

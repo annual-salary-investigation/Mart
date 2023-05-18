@@ -22,12 +22,12 @@
 
         <StackPanel Grid.Row="1">
             <Label Content="아이디" Width="204" />
-            <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
+            <TextBox x:Name="TxtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
             <Label Content="비밀번호" Width="204"/>
-            <PasswordBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="12345" />
+            <PasswordBox x:Name="TxtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="12345" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnJoin" Content="회원가입" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnJoin_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
-                <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
+                <Button x:Name="BtnJoin" Content="회원가입" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnJoin_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
+                <Button x:Name="BtnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
 
             </StackPanel>
         </StackPanel>

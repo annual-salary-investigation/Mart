@@ -20,32 +20,32 @@ namespace MartApp.Views
             InitializeComponent();
         }
 
-        private async void btnOk_Click(object sender, RoutedEventArgs e)
+        private async void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             bool isTrue = true;
             string errorMsg = string.Empty;
 
-            if (string.IsNullOrEmpty(txtId.Text))
+            if (string.IsNullOrEmpty(TxtId.Text))
             {
                 isTrue = false;
                 errorMsg += "아이디를 입력하세요\n";
             }
-            if (string.IsNullOrEmpty(txtName.Text))
+            if (string.IsNullOrEmpty(TxtName.Text))
             {
                 isTrue = false;
                 errorMsg += "이름을 입력하세요\n";
             }
-            if (string.IsNullOrEmpty(txtPassword.Password))
+            if (string.IsNullOrEmpty(TxtPassword.Password))
             {
                 isTrue = false;
                 errorMsg += "비밀번호를 입력하세요\n";
             }
-            if (string.IsNullOrEmpty(txtPasswordCheck.Password))
+            if (string.IsNullOrEmpty(TxtPasswordCheck.Password))
             {
                 isTrue = false;
                 errorMsg += "비밀번호확인을 입력하세요\n";
             }
-            if (string.IsNullOrEmpty(txtPhoneNum.Text))
+            if (string.IsNullOrEmpty(TxtPhoneNum.Text))
             {
                 isTrue = false;
                 errorMsg += "핸드폰번호를 입력하세요\n";                
@@ -78,10 +78,10 @@ namespace MartApp.Views
                                              @PhoneNum )";
 
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                    cmd.Parameters.AddWithValue("@Id", txtId.Text);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@PassWord", txtPassword.Password);
-                    cmd.Parameters.AddWithValue("@PhoneNum", txtPhoneNum.Text);
+                    cmd.Parameters.AddWithValue("@Id", TxtId.Text);
+                    cmd.Parameters.AddWithValue("@Name", TxtName.Text);
+                    cmd.Parameters.AddWithValue("@PassWord", TxtPassword.Password);
+                    cmd.Parameters.AddWithValue("@PhoneNum", TxtPhoneNum.Text);
 
                     // 명령객체 실행구문
                     // 영향을 받은 행수를 반환함 => 회원가입이니까 1밖에 나올 수 없음
@@ -101,22 +101,22 @@ namespace MartApp.Views
             }
         }
 
-        private void txtId_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtId.Text == string.Empty)
+            if (TxtId.Text == string.Empty)
             {
-                IdNotice.Text = "아이디를 입력하시오!";
+                TxtIdNotice.Text = "아이디를 입력하시오!";
             }
             
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
         // 중복 아이디 확인
-        private void checkId_Click(object sender, RoutedEventArgs e)
+        private void BtnCheckId_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -132,26 +132,26 @@ namespace MartApp.Views
 
                     adapter.Fill(ds, "userdb"); // userdb의 값을 ds에 채움
 
-                    if (hasSpace(txtId.Text))
+                    if (hasSpace(TxtId.Text))
                     {
-                        IdNotice.Text = "아이디에 공백이 있습니다!";
+                        TxtIdNotice.Text = "아이디에 공백이 있습니다!";
                     }
-                    else if (string.IsNullOrEmpty(txtId.Text))
+                    else if (string.IsNullOrEmpty(TxtId.Text))
                     {
-                        IdNotice.Text = "아이디를 입력하세요!";
+                        TxtIdNotice.Text = "아이디를 입력하세요!";
                     }
                     else
                     {
-                        IdNotice.Text = "사용 가능한 아이디";
+                        TxtIdNotice.Text = "사용 가능한 아이디";
                     }
 
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         Debug.WriteLine(row["Id"]);
 
-                        if ( txtId.Text == row["Id"].ToString() )
+                        if ( TxtId.Text == row["Id"].ToString() )
                         {
-                            IdNotice.Text = "※ 중복 아이디 ※";
+                            TxtIdNotice.Text = "※ 중복 아이디 ※";
                         }
                     }
                     conn.Close();
@@ -172,20 +172,19 @@ namespace MartApp.Views
             return false;
         }
 
-
-        private void txtPasswordCheck_PasswordChanged(object sender, RoutedEventArgs e)
+        private void TxtPasswordCheck_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (txtPassword.Password == string.Empty)
+            if (TxtPassword.Password == string.Empty)
             {
-                PWNotice.Text = "비밀번호 일치 확인";
+                TxtPwNotice.Text = "비밀번호 일치 확인";
             }
-            else if (txtPassword.Password.Equals(txtPasswordCheck.Password, StringComparison.Ordinal))
+            else if (TxtPassword.Password.Equals(TxtPasswordCheck.Password, StringComparison.Ordinal))
             {
-                PWNotice.Text = "비밀번호가 일치합니다.";
+                TxtPwNotice.Text = "비밀번호가 일치합니다.";
             }
             else
             {
-                PWNotice.Text = "비밀번호가 일치하지 않습니다.";
+                TxtPwNotice.Text = "비밀번호가 일치하지 않습니다.";
             }
         }
     }

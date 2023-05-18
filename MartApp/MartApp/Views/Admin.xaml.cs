@@ -17,13 +17,13 @@ namespace MartApp.Views
         // 주문내역 버튼 누르면 페이지 이동
         private void BtnOrderList_Click(object sender, RoutedEventArgs e)
         {
-            adminPage.Source = new Uri("OrderList.xaml", UriKind.Relative);
+            AdminPage.Source = new Uri("OrderList.xaml", UriKind.Relative);
         }
 
         // 회원조회 버튼 누르면 페이지 이동
         private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
         {
-            adminPage.Source = new Uri("UserInfo.xaml", UriKind.Relative);
+            AdminPage.Source = new Uri("UserInfo.xaml", UriKind.Relative);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MartApp.Views
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             currCount = 1;
-            lblCount.Content = currCount;  // 현재 수량 확인 변수
+            LblCount.Content = currCount;  // 현재 수량 확인 변수
 
             using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
             {
@@ -154,7 +154,7 @@ namespace MartApp.Views
                             cmd.Parameters.AddWithValue("@Id", Commons.Id);
                             cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
                             cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
-                            cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                            cmd.Parameters.AddWithValue("@Count", LblCount.Content);
                             cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
                             cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
                             cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
@@ -172,7 +172,7 @@ namespace MartApp.Views
 
                             int total_price = Convert.ToInt32(currCount) * price_product;
 
-                            cmd.Parameters.AddWithValue("@Count", lblCount.Content);
+                            cmd.Parameters.AddWithValue("@Count", LblCount.Content);
                             cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
                             cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
                             cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
@@ -209,7 +209,7 @@ namespace MartApp.Views
         // 결제 버튼 눌렀을 때
         private void BtnBuy_Click(object sender, RoutedEventArgs e)
         {
-            count = Convert.ToInt32(lblCount.Content);
+            count = Convert.ToInt32(LblCount.Content);
             var directPayment = new Views.DirectPayment(this.productId, this.count);           // payment 결제창
             directPayment.Owner = this;
             directPayment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -217,12 +217,12 @@ namespace MartApp.Views
         }
 
         // + 버튼
-        private void btnPlus_Click(object sender, RoutedEventArgs e)
+        private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
             if (currCount < 99)
             {
                 currCount++;
-                lblCount.Content = currCount.ToString();
+                LblCount.Content = currCount.ToString();
 
                 int price = Convert.ToInt32(currCount) * price_product;
                 LblPrice.Content = price;
@@ -234,12 +234,12 @@ namespace MartApp.Views
         }
 
         // - 버튼
-        private void btnMinus_Click(object sender, RoutedEventArgs e)
+        private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
             if (currCount > 0)
             {
                 currCount--;
-                lblCount.Content = currCount.ToString();
+                LblCount.Content = currCount.ToString();
 
                 int price = Convert.ToInt32(currCount) * price_product;
                 LblPrice.Content = price;

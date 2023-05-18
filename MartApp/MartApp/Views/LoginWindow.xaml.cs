@@ -28,12 +28,12 @@ namespace MartApp.Views
             bool IsLogined = true;
             string errorMsg = string.Empty;
 
-            if (string.IsNullOrEmpty(txtId.Text))
+            if (string.IsNullOrEmpty(TxtId.Text))
             {
                 IsLogined = false;
                 errorMsg += "아이디가 입력되지 않았습니다.\n";
             }
-            if (string.IsNullOrEmpty(txtPassword.Password))
+            if (string.IsNullOrEmpty(TxtPassword.Password))
             {
                 IsLogined = false;
                 errorMsg += "비밀번호가 입력되지 않았습니다.\n";
@@ -65,8 +65,8 @@ namespace MartApp.Views
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     // Parameters.Add => varchar 열인 경우 데이터의 길이와 타입을 명시하여 사용자입력을 엄격히 제한
                     // Parameters.AddValue => 데이터를 nvarchar 형태로 보냄
-                    cmd.Parameters.AddWithValue("@Id", txtId.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPassword.Password);
+                    cmd.Parameters.AddWithValue("@Id", TxtId.Text);
+                    cmd.Parameters.AddWithValue("@Password", TxtPassword.Password);
 
                     // MySqlDataReader => 한줄씩 읽는 것
                     // MySqlDataAdapter => DataSet에 저장하는 방식이므로 여러개의 Table도 가능
@@ -91,10 +91,10 @@ namespace MartApp.Views
                                                                     }
                     else
                     {
-                        txtId.Focus();
+                        TxtId.Focus();
                         await this.ShowMessageAsync("로그인 실패", "회원 정보가 맞지 않습니다", MessageDialogStyle.Affirmative, null);
                         // txtId.Text = "";
-                        txtPassword.Password = "";
+                        TxtPassword.Password = "";
                     }
                     reader.Close();
                 }
@@ -126,7 +126,7 @@ namespace MartApp.Views
         // 화면 로드 되면 ID 입력란에 포커스가게 함
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            txtId.Focus();
+            TxtId.Focus();
         }
 
         // 회원가입 창으로 넘어가게 됨

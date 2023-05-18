@@ -21,6 +21,6 @@
                     Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}" Click="BtnOrderList_Click"/>
         </StackPanel>
         
-        <Frame Grid.Column="1" x:Name="adminPage" NavigationUIVisibility="Hidden" Margin="10"/>
+        <Frame Grid.Column="1" x:Name="AdminPage" NavigationUIVisibility="Hidden" Margin="10"/>
     </Grid>
 </mah:MetroWindow>

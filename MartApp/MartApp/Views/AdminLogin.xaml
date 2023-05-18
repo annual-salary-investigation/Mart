@@ -21,13 +21,13 @@
 
         <StackPanel Grid.Row="1">
             <Label Content="아이디" Width="204" />
-            <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="admin"/>
+            <TextBox x:Name="TxtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="admin"/>
             <Label Content="비밀번호" Width="204"/>
-            <PasswordBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="1234" />
+            <PasswordBox x:Name="TxtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="1234" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" 
+                <Button x:Name="BtnOk" Click="btnOk_Click" Content="확인" FontSize="15" 
                         Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
-                <Button x:Name="btnCancel" Click="btnCancel_Click" Content="취소" FontSize="15" 
+                <Button x:Name="BtnCancel" Click="btnCancel_Click" Content="취소" FontSize="15" 
                         Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
             </StackPanel>
 

@@ -51,12 +51,12 @@
             <Label Grid.Row="2" Grid.Column="1" Margin="10" Content="1000원" FontSize="20" x:Name="LblPrice"
                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                <Label Grid.Row="3" Grid.Column="1" x:Name="lblCount" Margin="10" Content="" FontSize="20" 
+                <Label Grid.Row="3" Grid.Column="1" x:Name="LblCount" Margin="10" Content="" FontSize="20" 
                          HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Button Grid.Row="3" Grid.Column="1" x:Name="btnPlus" Margin="5,10" Click="btnPlus_Click">
+                <Button Grid.Row="3" Grid.Column="1" x:Name="BtnPlus" Margin="5,10" Click="BtnPlus_Click">
                     <iconPacks:JamIcons Kind="Plus"/>
                 </Button>
-                <Button Grid.Row="3" Grid.Column="1" x:Name="btnMinus" Margin="5,10" Click="btnMinus_Click">
+                <Button Grid.Row="3" Grid.Column="1" x:Name="BtnMinus" Margin="5,10" Click="BtnMinus_Click">
                     <iconPacks:JamIcons Kind="Minus"/>
                 </Button>
             </StackPanel>
