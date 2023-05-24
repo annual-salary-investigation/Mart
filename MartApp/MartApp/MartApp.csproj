@@ -215,8 +215,8 @@
     <Compile Include="Views\CartWindow.xaml.cs">
       <DependentUpon>CartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DetailOrder.xaml.cs">
-      <DependentUpon>DetailOrder.xaml</DependentUpon>
+    <Compile Include="Views\DetailOrderList.xaml.cs">
+      <DependentUpon>DetailOrderList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailWindow.xaml.cs">
       <DependentUpon>DetailWindow.xaml</DependentUpon>
@@ -274,7 +274,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\DetailOrder.xaml">
+    <Page Include="Views\DetailOrderList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

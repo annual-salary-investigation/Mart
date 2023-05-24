@@ -14,16 +14,16 @@ namespace MartApp.Views
             InitializeComponent();
         }
 
-        // 주문내역 버튼 누르면 페이지 이동
-        private void BtnOrderList_Click(object sender, RoutedEventArgs e)
-        {
-            AdminPage.Source = new Uri("OrderList.xaml", UriKind.Relative);
-        }
-
         // 회원조회 버튼 누르면 페이지 이동
         private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
         {
             AdminPage.Source = new Uri("UserInfo.xaml", UriKind.Relative);
+        }
+
+        // 주문내역 버튼 누르면 페이지 이동
+        private void BtnOrderList_Click(object sender, RoutedEventArgs e)
+        {
+            AdminPage.Source = new Uri("OrderList.xaml", UriKind.Relative);
         }
     }
 }

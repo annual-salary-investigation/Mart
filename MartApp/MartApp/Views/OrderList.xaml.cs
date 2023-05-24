@@ -16,6 +16,7 @@ namespace MartApp.Views
     /// </summary>
     public partial class OrderList : Page
     {
+        int order_id = 0;
         public OrderList()
         {
             InitializeComponent();
@@ -53,12 +54,11 @@ namespace MartApp.Views
                             {
                                 Id = Convert.ToString(row["Id"]),
                                 Order_Id = Convert.ToInt32(row["Order_Id"]),
-                                Product = Convert.ToString(row["Product"] + " ..."),
+                                Product = Convert.ToString(row["Product"]+" ..."),
                                 Price = Convert.ToInt32(row["Price"]),
                                 DateTime = Convert.ToDateTime(row["DateTime"])
                             });
                         }
-
                         this.DataContext = list;
                         //GrdUserInfo.ItemsSource = list; // 이미지 띄움
                     }
@@ -72,8 +72,10 @@ namespace MartApp.Views
 
         private void GrdOrderInfo_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Admin admin = new Admin();
-            admin.AdminPage.Source = new Uri("DetailOrder.xaml", UriKind.Relative);
+            var selItem = GrdOrderInfo.SelectedItem as OrderItem;
+            var detailOrderList = new DetailOrderList(selItem.Order_Id);
+            detailOrderList.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            detailOrderList.ShowDialog();
         }
     }
 }
