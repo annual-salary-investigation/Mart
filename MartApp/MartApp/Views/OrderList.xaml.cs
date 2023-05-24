@@ -16,7 +16,6 @@ namespace MartApp.Views
     /// </summary>
     public partial class OrderList : Page
     {
-        int order_id = 0;
         public OrderList()
         {
             InitializeComponent();

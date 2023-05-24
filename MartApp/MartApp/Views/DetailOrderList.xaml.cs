@@ -20,7 +20,7 @@ namespace MartApp.Views
             InitializeComponent();
         }
 
-        public DetailOrderList(int order_id)
+        public DetailOrderList(int order_id) : this()
         {
             this.order_id = order_id;
         }
@@ -36,7 +36,7 @@ namespace MartApp.Views
                 {
                     if (conn.State == ConnectionState.Closed) { conn.Open(); }
 
-                    var query = @"SELECT Order_Id
+                    var query = @"SELECT Order_Id,
                                          Id,
                                          Product,
                                          Price,
@@ -47,10 +47,11 @@ namespace MartApp.Views
                                     FROM paymenttbl
                                    WHERE Order_Id = @Order_Id";
                     var cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Order_Id", order_id);
                     var adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adapter.Fill(ds, "mart");
-                    cmd.Parameters.AddWithValue("@Order_Id", this.order_id);
+                    
 
                     foreach (DataRow row in ds.Tables["mart"].Rows)
                     {
