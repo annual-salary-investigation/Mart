@@ -9,6 +9,7 @@ namespace MartApp.Models
     public class PaymentItem
     {
         public int ProductId { get; set; } 
+        public int Order_Id { get; set; }
         public string Id { get; set; } 
         public string Product { get; set; }
         public int Price { get; set; }

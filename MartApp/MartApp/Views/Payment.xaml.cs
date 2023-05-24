@@ -39,8 +39,20 @@ namespace MartApp.Views
                         conn.Open();
                     }
 
+                    // Order_Id 번호 조회
+                    var query = @"SELECT Order_Id
+                                    FROM paymenttbl
+                                    Order By Order_Id DESC;";
+
+                    var cmd = new MySqlCommand(query, conn);
+                    var adapter = new MySqlDataAdapter(cmd);
+                    var ds = new DataSet();
+                    adapter.Fill(ds, "mart");
+
+                    var num = Convert.ToInt32(ds.Tables["mart"].Rows[0]["Order_Id"]);
+
                     // 장바구니에서 선택된 상품 조회
-                    var query = @"SELECT ProductId,
+                    query = @"SELECT ProductId,
                                          Id,
                                          Product,
                                          Price,
@@ -52,14 +64,17 @@ namespace MartApp.Views
                                     FROM ordertbl
                                    WHERE Checked = 1";
 
-                    var cmd = new MySqlCommand(query, conn);
-                    var adapter = new MySqlDataAdapter(cmd);
-                    var ds = new DataSet();
+                     cmd = new MySqlCommand(query, conn);
+                     adapter = new MySqlDataAdapter(cmd);
+                     ds = new DataSet();
                     adapter.Fill(ds, "mart");
+
+                    
 
                     // PaymentDB에 insert
                     query = @"INSERT INTO paymenttbl
                                         ( ProductId,
+                                          Order_Id,
                                           Id,
                                           Product,
                                           Price,
@@ -69,6 +84,7 @@ namespace MartApp.Views
                                           DateTime)
                                    VALUES
                                         ( @ProductId,
+                                          @Order_Id,
                                           @Id,
                                           @Product,
                                           @Price,
@@ -81,6 +97,7 @@ namespace MartApp.Views
                     {
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@ProductId", row["ProductId"]);
+                        cmd.Parameters.AddWithValue("@Order_Id", num+1 );
                         cmd.Parameters.AddWithValue("@Id", row["Id"]);
                         cmd.Parameters.AddWithValue("@Product", row["Product"]);
                         cmd.Parameters.AddWithValue("@Price", row["Price"]);

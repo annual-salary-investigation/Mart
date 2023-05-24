@@ -131,7 +131,8 @@ namespace MartApp.Views
                         if (count == 0) // 해당하는 조건이 없다면 DB에 추가
                         {
                             string insQuery = @"INSERT INTO ordertbl
-                                                     ( ProductId,
+                                                     ( 
+                                                       ProductId,
                                                        Id,
                                                        Product,
                                                        Price,
