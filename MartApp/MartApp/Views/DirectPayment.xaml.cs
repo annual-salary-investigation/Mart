@@ -43,7 +43,7 @@ namespace MartApp.Views
                                          Price,
                                          Category,
                                          Image
-                                    FROM martdb
+                                    FROM marttbl
                                     WHERE ProductId = @ProductId";
 
                     var cmd = new MySqlCommand(query, conn);
@@ -51,9 +51,9 @@ namespace MartApp.Views
 
                     var adapter = new MySqlDataAdapter(cmd);
                     // var ds = new DataSet(); 
-                    adapter.Fill(ds, "martdb");
+                    adapter.Fill(ds, "mart");
 
-                    query = @"INSERT INTO paymentdb
+                    query = @"INSERT INTO paymenttbl
                                         ( ProductId,
                                           Id,
                                           Product,
@@ -74,7 +74,7 @@ namespace MartApp.Views
                                           @DateTime
                                           )";
 
-                    foreach (DataRow row in ds.Tables["martdb"].Rows)
+                    foreach (DataRow row in ds.Tables["mart"].Rows)
                     {
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@ProductId", row["ProductId"]);

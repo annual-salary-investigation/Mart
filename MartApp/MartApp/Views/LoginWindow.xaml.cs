@@ -6,7 +6,6 @@ using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Controls;
 
 namespace MartApp.Views
 {
@@ -58,7 +57,7 @@ namespace MartApp.Views
                     // 실행할 쿼리문
                     string query = @"SELECT Id
                                           , PassWord
-                                       FROM userdb
+                                       FROM usertbl
                                       WHERE Id = @Id
                                         AND Password = @Password;";
 

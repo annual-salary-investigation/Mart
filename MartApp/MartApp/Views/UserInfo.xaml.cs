@@ -31,14 +31,14 @@ namespace MartApp.Views
                     var query = $@"SELECT Id,
                                           Name,
                                           PhoneNum
-                                     FROM userdb;";
+                                     FROM usertbl;";
 
                     var cmd = new MySqlCommand(query, conn);
                     var adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
-                    adapter.Fill(ds, "userdb");
+                    adapter.Fill(ds, "mart");
 
-                    foreach (DataRow row in ds.Tables["userdb"].Rows)
+                    foreach (DataRow row in ds.Tables["mart"].Rows)
                     {
                         list.Add(new User
                         {

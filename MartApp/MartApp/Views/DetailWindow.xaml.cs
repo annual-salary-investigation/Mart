@@ -48,21 +48,21 @@ namespace MartApp.Views
                                          Price,
                                          Category,
                                          Image
-                                    FROM martdb
+                                    FROM marttbl
                                     WHERE ProductId = @ProductId";
 
                 var cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ProductId", this.productId);
                 var adapter = new MySqlDataAdapter(cmd);
                 // var ds = new DataSet(); 
-                adapter.Fill(ds, "martdb");
+                adapter.Fill(ds, "mart");
 
-                if (ds.Tables["martdb"].Rows.Count == 1)
+                if (ds.Tables["mart"].Rows.Count == 1)
                 {
-                    Debug.WriteLine($"{ds.Tables["martdb"].Rows[0]["Image"]}");
-                    var ImageSource = Convert.ToString(ds.Tables["martdb"].Rows[0]["Image"]);
-                    var productName = Convert.ToString(ds.Tables["martdb"].Rows[0]["Product"]);
-                    var productPrice = Convert.ToString(ds.Tables["martdb"].Rows[0]["Price"]);
+                    Debug.WriteLine($"{ds.Tables["mart"].Rows[0]["Image"]}");
+                    var ImageSource = Convert.ToString(ds.Tables["mart"].Rows[0]["Image"]);
+                    var productName = Convert.ToString(ds.Tables["mart"].Rows[0]["Product"]);
+                    var productPrice = Convert.ToString(ds.Tables["mart"].Rows[0]["Price"]);
                     if (string.IsNullOrEmpty(ImageSource))
                     {
                         ImgProduct.Source = new BitmapImage(new Uri("/No_Picture.png", UriKind.RelativeOrAbsolute));
@@ -120,17 +120,17 @@ namespace MartApp.Views
                             conn.Open();
                         }
 
-                        string query = @"SELECT ProductId FROM orderdb 
+                        string query = @"SELECT ProductId FROM ordertbl
                                              WHERE ProductId = @ProductId AND Id = @Id";
 
                         MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                        cmd.Parameters.AddWithValue("@ProductId", ds.Tables["mart"].Rows[0]["ProductId"]);
                         cmd.Parameters.AddWithValue("@Id", Commons.Id);
                         var count = Convert.ToInt32( cmd.ExecuteScalar()); // 해당하는 쿼리가 있는지 확인
                         
                         if (count == 0) // 해당하는 조건이 없다면 DB에 추가
                         {
-                            string insQuery = @"INSERT INTO orderdb
+                            string insQuery = @"INSERT INTO ordertbl
                                                      ( ProductId,
                                                        Id,
                                                        Product,
@@ -150,20 +150,20 @@ namespace MartApp.Views
                                                      @DateTime )";
 
                             cmd = new MySqlCommand(insQuery, conn);
-                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["mart"].Rows[0]["ProductId"]);
                             cmd.Parameters.AddWithValue("@Id", Commons.Id);
-                            cmd.Parameters.AddWithValue("@Product", ds.Tables["martdb"].Rows[0]["Product"]);
+                            cmd.Parameters.AddWithValue("@Product", ds.Tables["mart"].Rows[0]["Product"]);
                             cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
                             cmd.Parameters.AddWithValue("@Count", LblCount.Content);
-                            cmd.Parameters.AddWithValue("@Category", ds.Tables["martdb"].Rows[0]["Category"]);
-                            cmd.Parameters.AddWithValue("@Image", ds.Tables["martdb"].Rows[0]["Image"]);
+                            cmd.Parameters.AddWithValue("@Category", ds.Tables["mart"].Rows[0]["Category"]);
+                            cmd.Parameters.AddWithValue("@Image", ds.Tables["mart"].Rows[0]["Image"]);
                             cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
                             cmd.ExecuteNonQuery();
                             // insRes += cmd.ExecuteNonQuery();
                         }
                         else
                         {
-                            string upQuery = @"UPDATE orderdb
+                            string upQuery = @"UPDATE ordertbl
                                                   SET Count = Count + @Count,
                                                       Price = Price + @Price,
                                                       DateTime = @DateTime
@@ -175,12 +175,12 @@ namespace MartApp.Views
                             cmd.Parameters.AddWithValue("@Count", LblCount.Content);
                             cmd.Parameters.AddWithValue("@Price", LblPrice.Content);
                             cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["martdb"].Rows[0]["ProductId"]);
+                            cmd.Parameters.AddWithValue("@ProductId", ds.Tables["mart"].Rows[0]["ProductId"]);
                             cmd.ExecuteNonQuery();
                             //insRes += cmd.ExecuteNonQuery();
                         }
                     }
-                    await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!",  MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
+                    result = await this.ShowMessageAsync("장바구니", "장바구니에 추가되었습니다!",  MessageDialogStyle.AffirmativeAndNegative, mySettings_two);
                    
                     // 쇼핑게속하기 / 장바구니 확인
                     if(result == MessageDialogResult.Affirmative)

@@ -41,13 +41,13 @@ namespace MartApp.Views
                                              Category,
                                              Image,
                                              DateTime
-                                        FROM paymentdb;";
+                                        FROM paymenttbl;";
                         var cmd = new MySqlCommand(query, conn);
                         var adapter = new MySqlDataAdapter(cmd);
                         DataSet ds = new DataSet();
-                        adapter.Fill(ds, "paymentdb");
+                        adapter.Fill(ds, "mart");
 
-                        foreach (DataRow row in ds.Tables["paymentdb"].Rows)
+                        foreach (DataRow row in ds.Tables["mart"].Rows)
                         {
                             //var TimeDate = DateTime.
                             list.Add(new OrderItem

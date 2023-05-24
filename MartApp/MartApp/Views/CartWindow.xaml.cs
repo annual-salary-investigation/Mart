@@ -41,16 +41,16 @@ namespace MartApp.Views
                                           Category,
                                           Image,
                                           DateTime
-                                     FROM orderdb
+                                     FROM ordertbl
                                     WHERE Id = '{Commons.Id}'";
 
                     var cmd = new MySqlCommand(query, conn);
                     var adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
-                    adapter.Fill(ds, "orderdb");
+                    adapter.Fill(ds, "mart");
 
                     // 바인딩 하기 위해
-                    foreach (DataRow row in ds.Tables["orderdb"].Rows)
+                    foreach (DataRow row in ds.Tables["mart"].Rows)
                     {
                         list.Add(new OrderItem
                         {
@@ -71,16 +71,16 @@ namespace MartApp.Views
                     // 총 합계금액
                     query = $@"SELECT Id,
                                       SUM(Price) AS Total
-                                 FROM orderdb
+                                 FROM ordertbl
                                 WHERE Id = '{Commons.Id}'
                              GROUP BY Id";
 
                     cmd = new MySqlCommand(query, conn);
                     adapter = new MySqlDataAdapter(cmd);
                     ds = new DataSet();
-                    adapter.Fill(ds, "orderdb");
+                    adapter.Fill(ds, "mart");
 
-                    var labeltext = Convert.ToString(ds.Tables["orderdb"].Rows[0]["Total"]);
+                    var labeltext = Convert.ToString(ds.Tables["mart"].Rows[0]["Total"]);
                     LblTotalPrice.Content = $"총 합계 금액 : {labeltext}";
                 }
             }
@@ -117,12 +117,12 @@ namespace MartApp.Views
                     }
 
                     // Checked 기본값을 한번 초기화
-                    var query = @"UPDATE orderdb SET Checked = NULL";
+                    var query = @"UPDATE ordertbl SET Checked = NULL";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
 
                     // 선택된 셀의 Checked 값을 업데이트
-                    query = @"UPDATE orderdb
+                    query = @"UPDATE ordertbl
                                  SET Checked = 1
                                WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
 
@@ -168,7 +168,7 @@ namespace MartApp.Views
                         conn.Open();
                     }
 
-                    var query = @"DELETE FROM orderdb WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
+                    var query = @"DELETE FROM ordertbl WHERE Id = @Id AND ProductId=@ProductId AND DateTime=@DateTime";
 
                     foreach (OrderItem item in GrdCart.SelectedItems)
                     {

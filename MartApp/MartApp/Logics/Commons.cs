@@ -1,6 +1,5 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using MahApps.Metro.Converters;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,7 +14,7 @@ namespace MartApp.Logics
         // DB 연결 (MySQL)
         public static readonly string MyConnString = "Server=210.119.12.72;" +
                                                      "Port=3306;" +
-                                                     "Database=martdb;" +
+                                                     "Database=mart;" +
                                                      "Uid=root;" + 
                                                      "Pwd=12345;";
 

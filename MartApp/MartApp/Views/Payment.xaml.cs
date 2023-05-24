@@ -49,16 +49,16 @@ namespace MartApp.Views
                                          Image,
                                          DateTime,
                                          Checked
-                                    FROM orderdb
+                                    FROM ordertbl
                                    WHERE Checked = 1";
 
                     var cmd = new MySqlCommand(query, conn);
                     var adapter = new MySqlDataAdapter(cmd);
                     var ds = new DataSet();
-                    adapter.Fill(ds, "orderdb");
+                    adapter.Fill(ds, "mart");
 
                     // PaymentDB에 insert
-                    query = @"INSERT INTO paymentdb
+                    query = @"INSERT INTO paymenttbl
                                         ( ProductId,
                                           Id,
                                           Product,
@@ -77,7 +77,7 @@ namespace MartApp.Views
                                           @Image,
                                           @DateTime)";
                     
-                    foreach (DataRow row in ds.Tables["orderdb"].Rows)
+                    foreach (DataRow row in ds.Tables["mart"].Rows)
                     {
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@ProductId", row["ProductId"]);
@@ -92,7 +92,7 @@ namespace MartApp.Views
                     }
 
                     // 장바구니에서 삭제
-                    query = @"DELETE FROM orderdb WHERE Checked=1;";
+                    query = @"DELETE FROM ordertbl WHERE Checked=1;";
                     cmd = new MySqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
 

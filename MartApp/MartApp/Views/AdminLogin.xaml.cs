@@ -57,7 +57,7 @@ namespace MartApp.Views
                     // 실행할 쿼리문
                     string query = @"SELECT Id
                                           , PassWord
-                                       FROM admindb
+                                       FROM admintbl
                                       WHERE Id = @Id
                                         AND Password = @Password;";
 
