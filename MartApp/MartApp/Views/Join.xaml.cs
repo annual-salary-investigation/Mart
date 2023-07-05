@@ -66,7 +66,7 @@ namespace MartApp.Views
                         conn.Open();
                     }
 
-                    var insQuery = @"INSERT INTO userdb
+                    var insQuery = @"INSERT INTO usertbl
                                             (Id,
                                              Name,
                                              PassWord,
@@ -124,13 +124,13 @@ namespace MartApp.Views
                 {
                     if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
 
-                    var insQuery = @"SELECT Id FROM userdb";
+                    var insQuery = @"SELECT Id FROM usertbl";
 
                     MySqlCommand cmd = new MySqlCommand(insQuery, conn);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
 
-                    adapter.Fill(ds, "userdb"); // userdb의 값을 ds에 채움
+                    adapter.Fill(ds, "usertbl"); // userdb의 값을 ds에 채움
 
                     if (hasSpace(TxtId.Text))
                     {
