@@ -144,7 +144,8 @@ namespace MartApp.Views
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var join = new Join();
+            join.Close();
         }
     }
 
