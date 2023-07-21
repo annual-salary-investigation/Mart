@@ -6,7 +6,8 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="600" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing">
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="700" Width="1000" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -15,29 +16,75 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            
+            <!--카테고리-->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Width="Auto">
+                <Button x:Name="BtnSelFruit" Content="과일" Click="BtnSelFruit_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+                <Button x:Name="BtnSelVege" Content="채소" Click="BtnSelVege_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+                <Button x:Name="BtnSelMeat" Content="육류" Click="BtnSelMeat_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+                <Button x:Name="BtnSelSeafood" Content="수산" Click="BtnSelSeafood_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+                <Button x:Name="BtnSelSnack" Content="과자" Click="BtnSelSnack_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+                <Button x:Name="BtnSelDrink" Content="음료" Click="BtnSelDrink_Click" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <ComboBox x:Name="CboReqDate" Width="380" Margin="5" Style="{StaticResource MahApps.Styles.ComboBox}" 
+                              mah:TextBoxHelper.Watermark="내역 날짜별 조회"
+                              mah:TextBoxHelper.UseFloatingWatermark="True"
+                              mah:TextBoxHelper.ClearTextButton="True"
+                              SelectionChanged="CboReqDate_SelectionChanged"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
+
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
         <Label Grid.Row="0" x:Name="LblLogin" Content="" Margin="10" FontSize="14" FontFamily="NanumGothic"/>
         <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
                 Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
 
-        <!--카테고리-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="BtnSelFruit" Content="과일" Click="BtnSelFruit_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelVege" Content="채소" Click="BtnSelVege_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelMeat" Content="육류" Click="BtnSelMeat_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelSeafood" Content="수산" Click="BtnSelSeafood_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelSnack" Content="과자" Click="BtnSelSnack_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-            <Button x:Name="BtnSelDrink" Content="음료" Click="BtnSelDrink_Click" Width="100"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-        </StackPanel>
 
-        <Frame Grid.Row="2" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10"/>
-
+        
+        
+        <Frame Grid.Row="2" Grid.Column="0" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10" Width="580" HorizontalAlignment="left"/>
+        <DataGrid Grid.Row="2" Grid.Column="1" x:Name="GrdUserInfo" Margin="5,5,5,5" FontSize="15" Width="380" HorizontalAlignment="right"
+                              IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
+                              ItemsSource="{Binding}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Product}" Header="상품" />
+                <DataGridTextColumn Binding="{Binding Price}" Header="가격" />
+                <DataGridTextColumn Binding="{Binding Count}" Header="수량" />
+                <DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{yyyy/MM/dd}}" Header="주문일자" />
+                
+                <DataGridTemplateColumn Header="이미지">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
         <StatusBar Grid.Row="3">
             <StatusBarItem Content="Mart APP"/>
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
