@@ -74,7 +74,7 @@ namespace MartApp
         }
 
         // MetroWindow 창이 로드 되었을때 로그인 창이 먼저 띄어지게 함
-        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        public void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var loginpage = new Views.LoginWindow();
             loginpage.Owner = this;

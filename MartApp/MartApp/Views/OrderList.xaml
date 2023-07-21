@@ -25,8 +25,8 @@
                             <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-                <DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{0:yyyy/MM/dd}}" Header="주문일자" />
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{0:yyyy/MM/dd}}" Header="주문일자" />-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

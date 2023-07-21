@@ -8,7 +8,7 @@
         xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="Cart" Height="450" Width="800" FontFamily="NanumGothic" Loaded="CartWindow_Loaded" WindowStartupLocation="CenterOwner">
+        Title="Cart" Height="700" Width="950" FontFamily="NanumGothic" Loaded="CartWindow_Loaded" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>

@@ -375,6 +375,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\butterflies.png" />
+    <Resource Include="Resource\chameleon.png" />
+    <Resource Include="Resource\chick.png" />
+    <Resource Include="Resource\kitty.png" />
+    <Resource Include="Resource\panda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\market.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

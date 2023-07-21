@@ -8,29 +8,62 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MartApp"
         mc:Ignorable="d"
-        Title="TT Mart" Height="360" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
+        Title="TT Mart" Height="700" Width="950" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded">
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Button Content="관리자" Margin="5" Width="50" Height ="30" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnAdmin"/>
-            <Label Content="로그인" FontSize="22" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
-        </Grid>
+        
+        <!--관리자영역-->
+        <StackPanel Grid.Row="0">
+            <Button Content="관리자" Margin="5" Width="100" Height ="30" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnAdmin"/>
+        </StackPanel>
 
+        <!--로그인라벨 영역-->
         <StackPanel Grid.Row="1">
-            <Label Content="아이디" Width="204" />
-            <TextBox x:Name="TxtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
-            <Label Content="비밀번호" Width="204"/>
-            <PasswordBox x:Name="TxtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="12345" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="BtnJoin" Content="회원가입" FontSize="15" Margin="30"  Width="100" Height="35" Click="btnJoin_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
-                <Button x:Name="BtnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
+            <Label Content="로그인" FontSize="35" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
+        </StackPanel>
 
+
+        <!--회원가입, 로그인 영역-->
+        <StackPanel Grid.Row="2">
+            <Label Content="아이디" Width="300" FontSize="25" FontWeight="ExtraBold"/>
+            <TextBox x:Name="TxtId" Width="300" FontSize="25" KeyDown="txtId_KeyDown" Text="user"/>
+            <Label Content="비밀번호" Width="300" FontSize="25" FontWeight="ExtraBold"/>
+            <PasswordBox x:Name="TxtPassword" Width="300" FontSize="25" KeyDown="txtPassword_KeyDown" PasswordChar="●" Password="12345" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
+                <Button x:Name="BtnJoin" Content="회원가입" FontSize="25"  Width="125" Height="50" Click="btnJoin_Click" Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"/>
+                <Button x:Name="BtnOk" Click="btnOk_Click" Content="확인" FontSize="25" Margin="30" Width="125" Height="50" Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"/>
             </StackPanel>
         </StackPanel>
+
+        <!--이모티콘영역-->
+        <Grid Grid.Row="3">
+            
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Effect>
+                <!-- 그림자 효과를 사용하여 배경을 꾸밉니다. -->
+                <DropShadowEffect Color="Gray" BlurRadius="10" ShadowDepth="5" />
+            </Grid.Effect>
+            <Image Source="/Resource/chameleon.png" VerticalAlignment="Bottom" Width="80"  Height="80" Grid.Column="3" HorizontalAlignment="Left" Margin="0,0,0,-13"/>
+            <Image Source="/Resource/chick.png" VerticalAlignment="Bottom" Width="80"  Height="80" Grid.Column="3" Margin="75,0,145,0"/>
+            <Image Source="/Resource/kitty.png" VerticalAlignment="Bottom" Width="80"  Height="80" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,0,20"/>
+            <Image Source="/Resource/panda.png" VerticalAlignment="Bottom" Width="80"  Height="80" Grid.Column="3" HorizontalAlignment="Left" Margin="142,0,0,0"/>
+        </Grid>
 
     </Grid>
 </mah:MetroWindow>

@@ -115,6 +115,8 @@ namespace MartApp.Views
 
                     await this.ShowMessageAsync("결제", "결제가 완료되었습니다.");
                     this.Close();
+                    var main = new MainWindow();
+                    main.MetroWindow_Loaded(sender, e);
                 }
             }
             catch(Exception ex) 
