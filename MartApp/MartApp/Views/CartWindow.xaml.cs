@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace MartApp.Views
 {
@@ -20,7 +21,6 @@ namespace MartApp.Views
         {
             InitializeComponent();
         }
-
         public async void CartWindow_Loaded(object sender, RoutedEventArgs e)
         {
             List<OrderItem> list = new List<OrderItem>();
@@ -93,6 +93,8 @@ namespace MartApp.Views
         // 상품 버튼 누를때
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
+            var main = new MainWindow();
+           // main.Refresh();
             this.Close(); // 장바구니창 꺼지면서 상품으로 돌아가게 됨
         }
 

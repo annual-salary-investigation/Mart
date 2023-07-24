@@ -11,8 +11,10 @@ namespace MartApp.Views
     /// <summary>
     /// Payment.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class payment : MetroWindow
-    {
+    /// 
+        public partial class payment : MetroWindow
+        {
+        
         public payment()
         {
             InitializeComponent();
@@ -104,7 +106,7 @@ namespace MartApp.Views
                         cmd.Parameters.AddWithValue("@Count", row["Count"]);
                         cmd.Parameters.AddWithValue("@Category", row["Category"]);
                         cmd.Parameters.AddWithValue("@Image", row["Image"]);
-                        cmd.Parameters.AddWithValue("@DateTime", row["DateTime"]);
+                        cmd.Parameters.AddWithValue("@DateTime", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
                         cmd.ExecuteNonQuery();
                     }
 

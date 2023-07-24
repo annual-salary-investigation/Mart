@@ -120,7 +120,7 @@ namespace MartApp
             Process.GetCurrentProcess().Kill();
         }
 
-        private void CboReqDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void CboReqDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try 
             {
