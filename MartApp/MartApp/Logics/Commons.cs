@@ -11,6 +11,7 @@ namespace MartApp.Logics
         public static bool Islogin = false;
         public static bool isManager = false;
         public static string Id = string.Empty;
+        public static bool Loging = false;
         // DB 연결 (MySQL)
         public static readonly string MyConnString = "Server=210.119.12.72;" +
                                                      "Port=3306;" +

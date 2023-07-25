@@ -94,7 +94,7 @@ namespace MartApp.Views
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
             var main = new MainWindow();
-           // main.Refresh();
+            main.MetroWindow_Loaded(sender, e);
             this.Close(); // 장바구니창 꺼지면서 상품으로 돌아가게 됨
         }
 

@@ -95,7 +95,7 @@ namespace MartApp.Views
                         // txtId.Text = "";
                         TxtPassword.Password = "";
                     }
-                    reader.Close();
+                    reader.Close(); 
                 }
             }
             catch (Exception ex)

@@ -38,48 +38,64 @@
                     Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
             </StackPanel>
 
-            <Label Grid.Column = "1" Grid.Row="1" HorizontalContentAlignment="Center" Content="주문내역 조회" FontSize="30"/>
+            <Label Grid.Column = "1" Grid.Row="1" HorizontalContentAlignment="Center" Content="주문내역 조회" FontSize="25" Margin="5"/>
         </Grid>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="350" />
             </Grid.ColumnDefinitions>
 
-        </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
-        <Label Grid.Row="0" x:Name="LblLogin" Content="" Margin="10" FontSize="14" FontFamily="NanumGothic"/>
-        <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
-                Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
-        <Frame Grid.Row="2" Grid.Column="0" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10" Width="580" HorizontalAlignment="left"/>
-        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <ComboBox x:Name="CboReqDate" Width="330" Margin="5" Style="{StaticResource MahApps.Styles.ComboBox}" 
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <ComboBox x:Name="CboReqDate" Width="230" Margin="5" Style="{StaticResource MahApps.Styles.ComboBox}" 
                               mah:TextBoxHelper.Watermark="내역 날짜별 조회"
                               mah:TextBoxHelper.UseFloatingWatermark="True"
                               mah:TextBoxHelper.ClearTextButton="True"
                               SelectionChanged="CboReqDate_SelectionChanged"/>
-        </StackPanel>
-        <DataGrid Grid.Row="2" x:Name="GrdUserInfo" Margin="615,0,0,0" FontSize="15" Width="330" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                </StackPanel>
+
+                <Button Grid.Row="0" x:Name="BtnRefresh" Content="새로고침" HorizontalAlignment="Right" Margin="0,0,10,0" 
+                Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"  Click="Refresh_Click"/>
+
+                <DataGrid Grid.Row="2" Grid.Column="0" x:Name="GrdUserInfo" Margin="10,10,10,10" FontSize="15" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top"
                               IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
-                              ItemsSource="{Binding}" AutoGenerateColumns="False" Height="489" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Product}" Header="상품" />
-                <DataGridTextColumn Binding="{Binding Price}" Header="가격" />
-                <DataGridTextColumn Binding="{Binding Count}" Header="수량" />
-                <!--<DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{yyyy/MM/dd}}" Header="주문일자" />-->
+                              ItemsSource="{Binding}" AutoGenerateColumns="False" Height="480" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Product}" Header="상품" />
+                        <DataGridTextColumn Binding="{Binding Price}" Header="가격" />
+                        <DataGridTextColumn Binding="{Binding Count}" Header="수량" />
+                        <!--<DataGridTextColumn Binding="{Binding DateTime, StringFormat={}{yyyy/MM/dd}}" Header="주문일자" />-->
 
-                <DataGridTemplateColumn Header="이미지">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="이미지">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image x:Name="img" Source="{Binding Image}" Width="70" Height="70"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-            </DataGrid.Columns>
-        </DataGrid>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+        </Grid>
+            
+        <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
+        <Label Grid.Row="0" x:Name="LblLogin" Content="" Margin="10" FontSize="14" FontFamily="NanumGothic"/>
+        <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
+                Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
+        
+        <Frame Grid.Row="2" Grid.Column="0" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10" Width="580" HorizontalAlignment="left"/>
+        
+        
         <StatusBar Grid.Row="3">
             <StatusBarItem Content="Mart APP"/>
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>

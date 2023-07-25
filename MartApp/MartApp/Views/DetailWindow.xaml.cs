@@ -215,6 +215,7 @@ namespace MartApp.Views
             directPayment.Owner = this;
             directPayment.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             directPayment.ShowDialog();
+            this.Close();       // 구매버튼 누른  후 창이 자동으로 꺼짐
         }
 
         // + 버튼

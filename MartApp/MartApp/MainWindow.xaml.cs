@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using MartApp.Logics;
+using System.Timers;
 
 namespace MartApp
 {
@@ -17,6 +18,7 @@ namespace MartApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private System.Timers.Timer Timer;
         public MainWindow()
         {
             InitializeComponent();
@@ -76,20 +78,50 @@ namespace MartApp
         // MetroWindow 창이 로드 되었을때 로그인 창이 먼저 띄어지게 함
         public void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var loginpage = new Views.LoginWindow();
-            loginpage.Owner = this;
-            loginpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            loginpage.ShowDialog();
-            if (Commons.Islogin )
+            Timer = new System.Timers.Timer(500);
+
+            Timer.AutoReset = true;
+            Timer.Enabled = true;
+
+            if (Commons.Loging == false)
+            {
+                var loginpage = new Views.LoginWindow();
+                loginpage.Owner = this;
+                loginpage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                loginpage.ShowDialog();
+                Commons.Loging = true;
+            }
+            
+            if (Commons.Islogin)
             {
                 BtnSelFruit_Click(sender, e);
                 LblLogin.Content = $"{Commons.Id}님 환영합니다!";
+
+                Timer.Elapsed += ProcUpdate; //btimer는 ProcUpdate함수를 호출
+                Timer.Start();
             }
+
             else
             {
                 this.Close();
             }
 
+            
+        }
+
+        private void ProcUpdate(object sender, ElapsedEventArgs e)
+        {
+            if (Commons.Islogin)
+            {//관리자로 로그인 되어있는 경우
+                this.Invoke(() =>
+                {
+                    DbLoaded();//DB를 Load하여 화면에 출력하는 함수 호출
+                });
+            }
+        }
+
+        private void DbLoaded()
+        {
             using (MySqlConnection conn = new MySqlConnection(Commons.MyConnString))
             {
                 conn.Open();
@@ -98,7 +130,7 @@ namespace MartApp
                 var query = @"SELECT DISTINCT DATE(DateTime) AS DateOnly
                                   FROM mart.paymenttbl
                                   WHERE Id = @Id
-                                  ORDER BY DateOnly"; // 중복된 날짜를 하나로 통합하여 가져옵니다.
+                                  ORDER BY DateOnly DESC"; // 중복된 날짜를 하나로 통합하여 가져옵니다.
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 cmd.Parameters.AddWithValue("Id", Commons.Id);
@@ -115,6 +147,7 @@ namespace MartApp
                 CboReqDate.ItemsSource = DateTimelist;
             }
         }
+
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
@@ -168,6 +201,11 @@ namespace MartApp
             {
                 MessageBox.Show($"오류 발생 : {ex}");
             }
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            CboReqDate_SelectionChanged(this, null);
         }
     }
 }
