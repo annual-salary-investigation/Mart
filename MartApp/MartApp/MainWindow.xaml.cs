@@ -207,5 +207,10 @@ namespace MartApp
         {
             CboReqDate_SelectionChanged(this, null);
         }
+
+        private void EasterEgg_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

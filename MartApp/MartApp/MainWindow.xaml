@@ -87,15 +87,17 @@
             </Grid>
 
         </Grid>
-            
+
         <Label Grid.Row="0" Content="TT MART" HorizontalContentAlignment="Center" FontSize="30"/>
         <Label Grid.Row="0" x:Name="LblLogin" Content="" Margin="10" FontSize="14" FontFamily="NanumGothic"/>
         <Button Grid.Row="0" x:Name="BtnCart" Content="장바구니" HorizontalAlignment="Right" Margin="10" 
                 Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}"  Click="BtnCart_Click"/>
-        
+        <Button Grid.Row="0" x:Name="BtnEE" Content="이스터에그" HorizontalAlignment="Left" Margin="10,33,0,2" 
+                Click="EasterEgg_Click" Width="41" FontSize="5"/>
+
         <Frame Grid.Row="2" Grid.Column="0" x:Name="CategoryPage" NavigationUIVisibility="Hidden" Margin="10" Width="580" HorizontalAlignment="left"/>
-        
-        
+
+
         <StatusBar Grid.Row="3">
             <StatusBarItem Content="Mart APP"/>
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
